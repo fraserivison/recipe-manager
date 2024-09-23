@@ -15,6 +15,10 @@
 
 ## Site Owner's Goal
 
+## Testing
+
+Testing the user model through Django Admin Dashboard
+
 
 ## End.
 
