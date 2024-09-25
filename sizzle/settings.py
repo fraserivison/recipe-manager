@@ -33,6 +33,11 @@ DEBUG = True
 ALLOWED_HOSTS = ['8000-fraserivison-sizzle-0yosmcb7l6q.ws-eu116.gitpod.io','.herokuapp.com'
 ]
 
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',  # Default
+    'allauth.account.auth_backends.AuthenticationBackend',  # Allauth
+)
+
 # Site ID for Django Allauth
 SITE_ID = 1
 
@@ -50,7 +55,7 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'allauth',
     'allauth.account',
-    'allauth.socialaccount', 
+    'allauth.socialaccount',
 ]
 
 # Allauth settings
