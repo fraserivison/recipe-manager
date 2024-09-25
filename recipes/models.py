@@ -13,3 +13,9 @@ class Recipe(models.Model):
     STATUS = ((0, "Draft"), (1, "Published"))
     status = models.IntegerField(choices=STATUS, default=0)
 
+    # Meta class to define ordering of records
+    class Meta:
+        ordering = ['-created_on']
+
+    def __str__(self):
+        return f"{self.title} by {self.author}"
