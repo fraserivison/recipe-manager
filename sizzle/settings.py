@@ -61,7 +61,7 @@ SITE_ID = 1
 
 
 # Allauth settings
-ACCOUNT_EMAIL_VERIFICATION = 'optional'  # Change to 'mandatory' after testing for email verification
+ACCOUNT_EMAIL_VERIFICATION = 'none'  # Change to 'mandatory' after testing for email verification
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
 ACCOUNT_USERNAME_REQUIRED = False
