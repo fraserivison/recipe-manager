@@ -1,5 +1,5 @@
 from django.urls import path
-from allauth.account.views import LoginView, SignupView
+from .views import LoginView, SignupView
 from . import views
 
 urlpatterns = [

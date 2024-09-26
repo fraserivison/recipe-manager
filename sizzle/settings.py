@@ -59,12 +59,13 @@ INSTALLED_APPS = [
 # Site ID for Django Allauth
 SITE_ID = 1
 
+CRISPY_TEMPLATE_PACK = 'bootstrap5'
 
 # Allauth settings
 ACCOUNT_EMAIL_VERIFICATION = 'none'  # Change to 'mandatory' after testing for email verification
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
-ACCOUNT_USERNAME_REQUIRED = True
+ACCOUNT_USERNAME_REQUIRED = False
 LOGIN_URL = '/accounts/login/'
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
