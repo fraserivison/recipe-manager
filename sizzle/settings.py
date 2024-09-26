@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'django.contrib.staticfiles',
     'cloudinary_storage',
+    'crispy_forms',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
@@ -58,11 +59,13 @@ INSTALLED_APPS = [
 # Site ID for Django Allauth
 SITE_ID = 1
 
+
 # Allauth settings
 ACCOUNT_EMAIL_VERIFICATION = 'optional'  # Change to 'mandatory' after testing for email verification
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
 ACCOUNT_USERNAME_REQUIRED = False
+LOGIN_URL = '/accounts/login/'
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 
