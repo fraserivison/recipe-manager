@@ -19,12 +19,13 @@
             {% endif %}
             
             <div class="mb-3">
-                <label for="username" class="form-label">Username or Email</label>
-                {{ form.username|add_class:"form-control" }}
-                {% if form.username.errors %}
-                    <div class="text-danger">{{ form.username.errors }}</div>
+                <label for="login" class="form-label">Username or Email</label>
+                {{ form.login|add_class:"form-control" }}
+                {% if form.login.errors %}
+                    <div class="text-danger">{{ form.login.errors }}</div>
                 {% endif %}
             </div>
+
             <div class="mb-3">
                 <label for="password" class="form-label">Password</label>
                 {{ form.password|add_class:"form-control" }}
