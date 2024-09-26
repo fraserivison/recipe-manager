@@ -6,4 +6,5 @@ def test_view(request):
     return render(request, 'registration/test.html')
 
 def index(request):
+    print("Index view accessed")
     return HttpResponse("This is Sizzle!")

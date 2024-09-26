@@ -38,9 +38,6 @@ AUTHENTICATION_BACKENDS = (
     'allauth.account.auth_backends.AuthenticationBackend',  # Allauth
 )
 
-# Site ID for Django Allauth
-SITE_ID = 1
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -57,6 +54,9 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
 ]
+
+# Site ID for Django Allauth
+SITE_ID = 1
 
 # Allauth settings
 ACCOUNT_EMAIL_VERIFICATION = 'optional'  # Change to 'mandatory' after testing for email verification
@@ -83,7 +83,7 @@ ROOT_URLCONF = 'sizzle.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
