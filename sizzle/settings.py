@@ -46,13 +46,13 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'django.contrib.sites',
     'django.contrib.staticfiles',
     'cloudinary_storage',
-    'recipes',
-    'django.contrib.sites',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
+    'recipes',
 ]
 
 # Site ID for Django Allauth
