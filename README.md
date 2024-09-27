@@ -146,7 +146,24 @@ The recipe model was thoroughly tested through manual operations using the Djang
 (TO DO NEXT >>>)
 
 #### User Registration and Authentication Testing
+
 Testing for user registration, login, and logout functionalities was completed:
+
+1. **User Registration**:
+   - Navigated to the Sign-Up page and filled in the required fields (username, email, password, confirm password).
+   - Submitted the form successfully, and a new user was created.
+   - Verified the user was redirected to the appropriate page after registration.
+   - Checked for validation messages for empty or incorrectly formatted fields.
+
+2. **User Login**:
+   - Accessed the Log-In page and entered valid credentials.
+   - Successfully logged in and was redirected to the index page.
+   - Attempted to log in with incorrect credentials, ensuring appropriate error messages were displayed.
+
+3. **User Logout**:
+   to be added
+
+Overall, all authentication features are functioning as expected.
 
 - **Registering Users:** The registration form collects and validates user information. Once registered, new users can log in with their credentials.
 - **Logging In:** Users can log in with valid credentials and are redirected to the correct page after login.
