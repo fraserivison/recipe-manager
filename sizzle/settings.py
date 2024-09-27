@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'cloudinary_storage',
     'crispy_forms',
+    'django_summernote',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
