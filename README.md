@@ -161,7 +161,9 @@ Testing for user registration, login, and logout functionalities was completed:
    - Attempted to log in with incorrect credentials, ensuring appropriate error messages were displayed.
 
 3. **User Logout**:
-   to be added
+   - Logged out from the application.
+   - Confirmed redirection to the index page after logging out.
+   - Verified that the user was no longer authenticated by checking for the login/signup links in the navigation bar.
 
 Overall, all authentication features are functioning as expected.
 
