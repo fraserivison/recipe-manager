@@ -169,7 +169,7 @@ Overall, all authentication features are functioning as expected.
 
 - **Registering Users:** The registration form collects and validates user information. Once registered, new users can log in with their credentials.
 - **Logging In:** Users can log in with valid credentials and are redirected to the correct page after login.
-- **Logging Out:** Users can successfully log out, and the system redirects them to the appropriate page.
+- **Logging Out:** Users can successfully log out, and the system redirects them to the homepage.
 
 #### Search Functionality Testing
 The search functionality was tested as follows:
