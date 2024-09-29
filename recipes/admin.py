@@ -8,6 +8,6 @@ class RecipeAdmin(SummernoteModelAdmin):
     search_fields = ['title']
     list_filter = ('status',)
     prepopulated_fields = {'slug': ('title',)}
-    summernote_fields = ('content', 'instructions')
+    summernote_fields = ('description', 'instructions')
 
 admin.site.register(Recipe, RecipeAdmin)

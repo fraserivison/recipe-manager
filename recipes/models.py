@@ -8,7 +8,7 @@ class Recipe(models.Model):
     slug = models.SlugField(max_length=200, unique=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="user_recipes")
     featured_image = CloudinaryField('image', default='placeholder')
-    content = models.TextField()
+    description = models.TextField()
     ingredients = models.TextField(null=True, blank=True)
     instructions = models.TextField()
     cooking_time = models.IntegerField()

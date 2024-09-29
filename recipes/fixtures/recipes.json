@@ -7,9 +7,15 @@
             "slug": "spaghetti-carbonara",
             "author": 1,
             "featured_image": "https://res.cloudinary.com/dmylma7bf/image/upload/v1727616704/on9twwjcdgoemai87f2s.webp",
-            "content": "A classic Italian pasta dish made with eggs, cheese, pancetta, and pepper.",
+            "description": "A classic Italian pasta dish made with eggs, cheese, pancetta, and pepper.",
+            "ingredients": "Spaghetti, Eggs, Parmesan cheese, Pancetta, Black pepper",
+            "instructions": "1. Cook spaghetti. 2. Fry pancetta. 3. Mix eggs and cheese. 4. Combine all and serve.",
             "created_on": "2023-09-01T12:00:00Z",
-            "status": 1
+            "status": 1,
+            "cooking_time": 20,
+            "servings": 2,
+            "category": "Pasta",
+            "average_rating": 4.5
         }
     },
     {
@@ -20,9 +26,15 @@
             "slug": "chicken-curry",
             "author": 1,
             "featured_image": "https://res.cloudinary.com/dmylma7bf/image/upload/v1727617025/wr087kj4wfb3ufiicxge.jpg",
-            "content": "A spicy and flavorful chicken curry with a blend of aromatic spices.",
+            "description": "A spicy and flavorful chicken curry with a blend of aromatic spices.",
+            "ingredients": "Chicken, Curry powder, Coconut milk, Onion, Garlic",
+            "instructions": "1. Sauté onions and garlic. 2. Add chicken and curry powder. 3. Stir in coconut milk. 4. Simmer and serve.",
             "created_on": "2023-09-02T12:00:00Z",
-            "status": 1
+            "status": 1,
+            "cooking_time": 30,
+            "servings": 4,
+            "category": "Curry",
+            "average_rating": 4.7
         }
     }
 ]
