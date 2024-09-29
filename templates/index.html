@@ -45,7 +45,7 @@
             {% for recipe in recipes %}
                 <div class="col-md-4">
                     <div class="card mb-4">
-                        <img src="{{ recipe.image.url }}" class="card-img-top" alt="{{ recipe.title }}">
+                        <img src="{{ recipe.featured_image.url }}" class="card-img-top" alt="{{ recipe.title }}">
                         <div class="card-body">
                             <h5 class="card-title">{{ recipe.title }}</h5>
                             <p class="card-text">{{ recipe.description }}</p>
