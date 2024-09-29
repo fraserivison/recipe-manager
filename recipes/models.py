@@ -9,7 +9,7 @@ class Recipe(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="user_recipes")
     featured_image = CloudinaryField('image', default='placeholder')
     content = models.TextField()
-    ingredients = models.TextField()
+    ingredients = models.TextField(null=True, blank=True)
     instructions = models.TextField()
     cooking_time = models.IntegerField()
     servings = models.IntegerField()
