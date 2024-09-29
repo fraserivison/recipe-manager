@@ -1,0 +1,28 @@
+[
+    {
+        "model": "recipes.recipe",
+        "pk": 1,
+        "fields": {
+            "title": "Spaghetti Carbonara",
+            "slug": "spaghetti-carbonara",
+            "author": 1,
+            "featured_image": "https://res.cloudinary.com/dmylma7bf/image/upload/v1727616704/on9twwjcdgoemai87f2s.webp",
+            "content": "A classic Italian pasta dish made with eggs, cheese, pancetta, and pepper.",
+            "created_on": "2023-09-01T12:00:00Z",
+            "status": 1
+        }
+    },
+    {
+        "model": "recipes.recipe",
+        "pk": 2,
+        "fields": {
+            "title": "Chicken Curry",
+            "slug": "chicken-curry",
+            "author": 1,
+            "featured_image": "https://res.cloudinary.com/dmylma7bf/image/upload/v1727617025/wr087kj4wfb3ufiicxge.jpg",
+            "content": "A spicy and flavorful chicken curry with a blend of aromatic spices.",
+            "created_on": "2023-09-02T12:00:00Z",
+            "status": 1
+        }
+    }
+]

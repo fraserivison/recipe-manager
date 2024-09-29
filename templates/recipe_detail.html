@@ -39,21 +39,16 @@
 
     <div class="container mt-5">
         <h1>{{ recipe.title }}</h1>
-        <img src="{{ recipe.image.url }}" class="img-fluid" alt="{{ recipe.title }}">
+        <img src="{{ recipe.featured_image.url }}" class="img-fluid" alt="{{ recipe.title }}">
         
         <h3>Ingredients:</h3>
-        <ul>
-            {% for ingredient in recipe.ingredients.all %}
-                <li>{{ ingredient.name }} ({{ ingredient.quantity }})</li>
-            {% endfor %}
-        </ul>
+        <p>{{ recipe.ingredients }}</p>
 
         <h3>Instructions:</h3>
         <p>{{ recipe.instructions }}</p>
 
         <p><strong>Cooking Time:</strong> {{ recipe.cooking_time }} minutes</p>
         <p><strong>Servings:</strong> {{ recipe.servings }}</p>
-        <p><strong>Difficulty Level:</strong> {{ recipe.difficulty }}</p>
         <p><strong>Category:</strong> {{ recipe.category }}</p>
 
         <h3>User Ratings:</h3>
