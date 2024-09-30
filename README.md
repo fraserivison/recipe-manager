@@ -20,8 +20,9 @@
     - [Manual Testing](#manual-testing)
     - [Unresolved Bugs](#unresolved-bugs)
 7. [Deployment](#deployment)
-8. [Version Control](#version-control)
-9. [Credits](#credits)
+8. [Project Setup](#project-setup)
+9. [Version Control](#version-control)
+10. [Credits](#credits)
 
 ---
 
@@ -143,8 +144,6 @@ The recipe model was thoroughly tested through manual operations using the Djang
 - **Deleting Recipes:** Recipes were deleted from the system using both the admin dashboard and the front-end interface. The deletion process correctly removed the recipe from the database and updated the recipe list for all users.
 - **Viewing Recipes:** Users were able to view all recipes, which were displayed in the order of their creation date. The recipes were tested to ensure that all fields were displayed correctly on the front-end interface, including titles, images, ingredients, and instructions.
 
-(TO DO NEXT >>>)
-
 #### User Registration and Authentication Testing
 
 Testing for user registration, login, and logout functionalities was completed:
@@ -170,6 +169,8 @@ Overall, all authentication features are functioning as expected.
 - **Registering Users:** The registration form collects and validates user information. Once registered, new users can log in with their credentials.
 - **Logging In:** Users can log in with valid credentials and are redirected to the correct page after login.
 - **Logging Out:** Users can successfully log out, and the system redirects them to the homepage.
+
+>>> TO DO NEXT
 
 #### Search Functionality Testing
 The search functionality was tested as follows:
@@ -210,6 +211,29 @@ The project was deployed using Heroku. Below is the deployment process:
 5. Deploy the app and verify it runs without issues.
 
 ---
+
+### Project Setup
+
+After setting up the project and running migrations, you can load predefined recipes into the database for faster testing or to populate the website with sample content.
+
+1. **Run Migrations**: Ensure your database is up to date by running the following command:
+
+    ```bash
+    python manage.py migrate
+    ```
+
+2. **Load Predefined Recipes**: To quickly populate your database with sample recipes, use the `loaddata` command with the `recipes.json` file. This file contains predefined recipe entries that will help you see how the application behaves with actual data. Run the following command:
+
+    ```bash
+    python manage.py loaddata recipes.json
+    ```
+
+   This command will read the data from `recipes.json` and insert it into your database, creating two sample recipes: "Spaghetti Carbonara" and "Chicken Curry." You can modify or add more recipes to this JSON file as needed.
+
+3. **Verify the Data**: After loading the data, you can check the Django admin panel to see the recipes listed under the Recipes section. This will allow you to quickly verify that your setup is working correctly.
+
+By following these steps, you will have a functional setup with sample data ready for testing and development.
+
 
 ## Version Control
 
