@@ -1,5 +1,4 @@
-[
-    {
+[{
         "model": "recipes.recipe",
         "pk": 1,
         "fields": {
@@ -35,6 +34,234 @@
             "servings": 4,
             "category": "Curry",
             "average_rating": 4.7
+        }
+    },
+    {
+        "model": "recipes.recipe",
+        "pk": 3,
+        "fields": {
+            "title": "Margherita Pizza",
+            "slug": "margherita-pizza",
+            "author": 1,
+            "featured_image": "https://res.cloudinary.com/dmylma7bf/image/upload/v1727617200/margherita_pizza.jpg",
+            "description": "A simple and classic Italian pizza with fresh tomatoes, mozzarella, and basil.",
+            "ingredients": "Pizza dough, Tomato sauce, Mozzarella, Fresh basil, Olive oil",
+            "instructions": "1. Spread sauce on dough. 2. Add mozzarella. 3. Bake and top with fresh basil.",
+            "created_on": "2023-09-03T12:00:00Z",
+            "status": 1,
+            "cooking_time": 15,
+            "servings": 4,
+            "category": "Pizza",
+            "average_rating": 4.6
+        }
+    },
+    {
+        "model": "recipes.recipe",
+        "pk": 4,
+        "fields": {
+            "title": "Beef Stroganoff",
+            "slug": "beef-stroganoff",
+            "author": 1,
+            "featured_image": "https://res.cloudinary.com/dmylma7bf/image/upload/v1727617400/beef_stroganoff.jpg",
+            "description": "A creamy beef dish with mushrooms, sour cream, and onions.",
+            "ingredients": "Beef strips, Mushrooms, Onions, Sour cream, Beef broth",
+            "instructions": "1. Sauté beef and onions. 2. Add mushrooms. 3. Stir in broth and sour cream. 4. Serve over noodles.",
+            "created_on": "2023-09-04T12:00:00Z",
+            "status": 1,
+            "cooking_time": 35,
+            "servings": 4,
+            "category": "Beef",
+            "average_rating": 4.8
+        }
+    },
+    {
+        "model": "recipes.recipe",
+        "pk": 5,
+        "fields": {
+            "title": "Vegetable Stir-fry",
+            "slug": "vegetable-stir-fry",
+            "author": 1,
+            "featured_image": "https://res.cloudinary.com/dmylma7bf/image/upload/v1727617500/veg_stir_fry.jpg",
+            "description": "A quick and healthy stir-fry with mixed vegetables and soy sauce.",
+            "ingredients": "Broccoli, Carrots, Bell peppers, Soy sauce, Garlic, Ginger",
+            "instructions": "1. Stir-fry vegetables. 2. Add soy sauce and garlic. 3. Serve with rice.",
+            "created_on": "2023-09-05T12:00:00Z",
+            "status": 1,
+            "cooking_time": 20,
+            "servings": 2,
+            "category": "Vegetarian",
+            "average_rating": 4.3
+        }
+    },
+    {
+        "model": "recipes.recipe",
+        "pk": 6,
+        "fields": {
+            "title": "Tacos al Pastor",
+            "slug": "tacos-al-pastor",
+            "author": 1,
+            "featured_image": "https://res.cloudinary.com/dmylma7bf/image/upload/v1727617800/tacos_al_pastor.jpg",
+            "description": "Mexican-style tacos with marinated pork, pineapple, and cilantro.",
+            "ingredients": "Pork shoulder, Pineapple, Tortillas, Cilantro, Lime",
+            "instructions": "1. Marinate and grill pork. 2. Assemble tacos with pineapple and cilantro. 3. Serve with lime.",
+            "created_on": "2023-09-06T12:00:00Z",
+            "status": 1,
+            "cooking_time": 25,
+            "servings": 4,
+            "category": "Mexican",
+            "average_rating": 4.9
+        }
+    },
+    {
+        "model": "recipes.recipe",
+        "pk": 7,
+        "fields": {
+            "title": "Caesar Salad",
+            "slug": "caesar-salad",
+            "author": 1,
+            "featured_image": "https://res.cloudinary.com/dmylma7bf/image/upload/v1727618000/caesar_salad.jpg",
+            "description": "A classic Caesar salad with crisp lettuce, Parmesan, and Caesar dressing.",
+            "ingredients": "Romaine lettuce, Parmesan, Croutons, Caesar dressing",
+            "instructions": "1. Toss lettuce with dressing. 2. Add Parmesan and croutons.",
+            "created_on": "2023-09-07T12:00:00Z",
+            "status": 1,
+            "cooking_time": 10,
+            "servings": 2,
+            "category": "Salad",
+            "average_rating": 4.5
+        }
+    },
+    {
+        "model": "recipes.recipe",
+        "pk": 8,
+        "fields": {
+            "title": "Lemon Garlic Salmon",
+            "slug": "lemon-garlic-salmon",
+            "author": 1,
+            "featured_image": "https://res.cloudinary.com/dmylma7bf/image/upload/v1727618100/lemon_garlic_salmon.jpg",
+            "description": "A healthy and flavorful salmon dish with lemon and garlic butter.",
+            "ingredients": "Salmon fillets, Lemon, Garlic, Butter, Parsley",
+            "instructions": "1. Bake salmon with garlic butter. 2. Drizzle with lemon juice and parsley.",
+            "created_on": "2023-09-08T12:00:00Z",
+            "status": 1,
+            "cooking_time": 20,
+            "servings": 2,
+            "category": "Seafood",
+            "average_rating": 4.7
+        }
+    },
+    {
+        "model": "recipes.recipe",
+        "pk": 9,
+        "fields": {
+            "title": "Chocolate Brownies",
+            "slug": "chocolate-brownies",
+            "author": 1,
+            "featured_image": "https://res.cloudinary.com/dmylma7bf/image/upload/v1727618200/chocolate_brownies.jpg",
+            "description": "Rich and fudgy chocolate brownies with a crispy top.",
+            "ingredients": "Chocolate, Butter, Sugar, Eggs, Flour",
+            "instructions": "1. Melt chocolate and butter. 2. Mix in sugar, eggs, and flour. 3. Bake and enjoy.",
+            "created_on": "2023-09-09T12:00:00Z",
+            "status": 1,
+            "cooking_time": 30,
+            "servings": 12,
+            "category": "Dessert",
+            "average_rating": 4.9
+        }
+    },
+    {
+        "model": "recipes.recipe",
+        "pk": 10,
+        "fields": {
+            "title": "Thai Green Curry",
+            "slug": "thai-green-curry",
+            "author": 1,
+            "featured_image": "https://res.cloudinary.com/dmylma7bf/image/upload/v1727618300/thai_green_curry.jpg",
+            "description": "A fragrant and spicy Thai green curry with coconut milk and chicken.",
+            "ingredients": "Chicken, Green curry paste, Coconut milk, Basil, Bell peppers",
+            "instructions": "1. Fry curry paste. 2. Add chicken and coconut milk. 3. Simmer with basil and peppers.",
+            "created_on": "2023-09-10T12:00:00Z",
+            "status": 1,
+            "cooking_time": 25,
+            "servings": 4,
+            "category": "Curry",
+            "average_rating": 4.8
+        }
+    },
+    {
+        "model": "recipes.recipe",
+        "pk": 11,
+        "fields": {
+            "title": "Pancakes",
+            "slug": "pancakes",
+            "author": 1,
+            "featured_image": "https://res.cloudinary.com/dmylma7bf/image/upload/v1727618400/pancakes.jpg",
+            "description": "Fluffy and light pancakes served with maple syrup.",
+            "ingredients": "Flour, Eggs, Milk, Baking powder, Sugar",
+            "instructions": "1. Mix batter. 2. Fry in a pan. 3. Serve with syrup.",
+            "created_on": "2023-09-11T12:00:00Z",
+            "status": 1,
+            "cooking_time": 10,
+            "servings": 4,
+            "category": "Breakfast",
+            "average_rating": 4.6
+        }
+    },
+    {
+        "model": "recipes.recipe",
+        "pk": 12,
+        "fields": {
+            "title": "Mushroom Risotto",
+            "slug": "mushroom-risotto",
+            "author": 1,
+            "featured_image": "https://res.cloudinary.com/dmylma7bf/image/upload/v1727618800/mushroom_risotto.jpg",
+            "description": "A creamy risotto made with Arborio rice, mushrooms, and Parmesan cheese.",
+            "ingredients": "Arborio rice, Mushrooms, Onion, Vegetable broth, Parmesan cheese",
+            "instructions": "1. Sauté onions and mushrooms. 2. Add rice and broth gradually. 3. Stir in Parmesan.",
+            "created_on": "2023-09-15T12:00:00Z",
+            "status": 1,
+            "cooking_time": 30,
+            "servings": 4,
+            "category": "Rice",
+            "average_rating": 4.7
+        }
+    },
+    {
+        "model": "recipes.recipe",
+        "pk": 13,
+        "fields": {
+            "title": "Caprese Salad",
+            "slug": "caprese-salad",
+            "author": 1,
+            "featured_image": "https://res.cloudinary.com/dmylma7bf/image/upload/v1727618900/caprese_salad.jpg",
+            "description": "A fresh salad made with tomatoes, mozzarella, basil, and balsamic glaze.",
+            "ingredients": "Tomatoes, Mozzarella, Fresh basil, Balsamic glaze, Olive oil",
+            "instructions": "1. Slice tomatoes and mozzarella. 2. Layer with basil. 3. Drizzle with olive oil and balsamic.",
+            "created_on": "2023-09-16T12:00:00Z",
+            "status": 1,
+            "cooking_time": 10,
+            "servings": 2,
+            "category": "Salad",
+            "average_rating": 4.5
+        }
+    },
+    {
+        "model": "recipes.recipe",
+        "pk": 14,
+        "fields": {
+            "title": "Baked Ziti",
+            "slug": "baked-ziti",
+            "author": 1,
+            "featured_image": "https://res.cloudinary.com/dmylma7bf/image/upload/v1727619000/baked_ziti.jpg",
+            "description": "A hearty pasta dish baked with marinara sauce and cheese.",
+            "ingredients": "Ziti pasta, Marinara sauce, Mozzarella cheese, Ricotta cheese, Parmesan cheese",
+            "instructions": "1. Cook pasta. 2. Mix with marinara and cheeses. 3. Bake until golden.",
+            "created_on": "2023-09-17T12:00:00Z",
+            "status": 1,
+            "cooking_time": 45,
+            "servings": 6,
+            "category": "Pasta",
+            "average_rating": 4.6
         }
     }
 ]
