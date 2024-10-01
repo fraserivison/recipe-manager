@@ -26,10 +26,10 @@ class RecipeForm(forms.ModelForm):
                 'placeholder': 'Recipe Title',
             }),
             'ingredients': forms.Textarea(attrs={
-                'placeholder': 'List ingredients...',
+                'placeholder': 'List ingredients on a seperate line...',
             }),
             'instructions': forms.Textarea(attrs={
-                'placeholder': 'Cooking instructions...',
+                'placeholder': 'List instructions on a seperate line...',
             }),
             'cooking_time': forms.NumberInput(attrs={
                 'placeholder': 'Cooking time (in minutes)',
