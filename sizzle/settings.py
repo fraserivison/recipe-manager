@@ -39,7 +39,10 @@ SECRET_KEY = 'django-insecure-4jr%w@yzuds+jccbi!0e=q2(2l-u&_epob@bc(0!nr(3lm)8i6
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['8000-fraserivison-sizzle-0yosmcb7l6q.ws-eu116.gitpod.io','sizzle-recipe-manager.herokuapp.com'
+ALLOWED_HOSTS = [
+    '8000-fraserivison-sizzle-0yosmcb7l6q.ws-eu116.gitpod.io',
+    'sizzle-recipe-manager.herokuapp.com',
+    'sizzle-recipe-manager-b83a6c304777.herokuapp.com',
 ]
 
 AUTHENTICATION_BACKENDS = (
