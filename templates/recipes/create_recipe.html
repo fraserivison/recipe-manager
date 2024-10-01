@@ -5,7 +5,35 @@
     <h2>Create a New Recipe</h2>
     <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
-        {{ form.as_p }}
+
+        <!-- Title Field -->
+        {{ form.title }}
+        <small class="form-text text-muted">{{ form.title.help_text }}</small>
+
+        <!-- Description Field -->
+        {{ form.description }}
+        <small class="form-text text-muted">{{ form.description.help_text }}</small>
+
+        <!-- Ingredients Field -->
+        {{ form.ingredients }}
+        <small class="form-text text-muted">{{ form.ingredients.help_text }}</small>
+
+        <!-- Instructions Field -->
+        {{ form.instructions }}
+        <small class="form-text text-muted">{{ form.instructions.help_text }}</small>
+
+        <!-- Cooking Time Field -->
+        {{ form.cooking_time }}
+        <small class="form-text text-muted">{{ form.cooking_time.help_text }}</small>
+
+        <!-- Servings Field -->
+        {{ form.servings }}
+        <small class="form-text text-muted">{{ form.servings.help_text }}</small>
+
+        <!-- Category Field -->
+        {{ form.category }}
+        <small class="form-text text-muted">{{ form.category.help_text }}</small>
+
         <button type="submit" class="btn btn-primary">Submit Recipe</button>
     </form>
 </div>

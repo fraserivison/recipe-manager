@@ -51,10 +51,10 @@ class RecipeForm(forms.ModelForm):
                 'placeholder': 'Recipe Title',
             }),
             'ingredients': forms.Textarea(attrs={
-                'placeholder': 'List ingredients on a seperate line...',
+                'placeholder': 'List ingredients (one per line)',
             }),
             'instructions': forms.Textarea(attrs={
-                'placeholder': 'List instructions on a seperate line...',
+                'placeholder': 'Enter step-by-step instructions (one step per line)',
             }),
             'cooking_time': forms.NumberInput(attrs={
                 'placeholder': 'Cooking time (in minutes)',
@@ -64,6 +64,14 @@ class RecipeForm(forms.ModelForm):
             }),
             'category': forms.Select(choices=CATEGORY_CHOICES),
             }
+
+        title = forms.CharField(help_text='Enter the title of the recipe.')
+        description = forms.CharField(help_text='Enter a brief description of the recipe, less than 45 characters.')
+        ingredients = forms.CharField(help_text='List each ingredient on a new line, e.g.,\n- Ingredient 1\n- Ingredient 2.')
+        instructions = forms.CharField(help_text='List each step of the cooking process on a new line- numbers will show up automatically e.g.,\n Preheat the oven.\n Mix ingredients.')
+        cooking_time = forms.IntegerField(help_text='Enter the cooking time in minutes.')
+        servings = forms.IntegerField(help_text='Enter the number of servings the recipe makes.')
+        category = forms.ChoiceField(help_text='Select a category for the recipe.')
 
 def clean_description(self):
         description = self.cleaned_data.get('description')

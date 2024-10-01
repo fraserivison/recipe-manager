@@ -82,8 +82,8 @@ For example, when a user clicks on a recipe, the URL changes from:
 3. **URL Configuration:** The recipe detail page's URL pattern was updated to accept slugs instead of the numeric ID, ensuring a cleaner and more user-friendly URL structure.
 4. **Navigation Links Updated:** All links to individual recipes were updated to point to the new slug-based URLs.
 
-This enhancement improves the website's usability, makes URLs more memorable, and optimizes the site for search engines.
----
+This enhancement improves the website's usability, makes URLs more memorable, and optimises the site for search engines.
+
 
 #### Pagination for Recipes
 We implemented pagination to break down the list of recipes into multiple pages. This improves loading performance and provides a more structured browsing experience for users. By default, the recipe listing page now shows a limited number of recipes per page, with controls to navigate between pages.
