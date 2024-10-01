@@ -3,7 +3,7 @@ from .models import Recipe
 
 class RecipeForm(forms.ModelForm):
     class Meta:
-        model = Recipe  # Use the Recipe model
+        model = Recipe
         fields = [
             'title',
             'featured_image',
@@ -17,9 +17,10 @@ class RecipeForm(forms.ModelForm):
         ]
         widgets = {
             'description': forms.Textarea(attrs={
-                'rows': 1,  # Limits the visible height to one row
-                'style': 'resize: none;',  # Prevents resizing the textarea
-                'placeholder': 'Enter a brief description...'  # Optional placeholder
+                'rows': 1,
+                'style': 'resize: none;',
+                'placeholder': 'Enter a brief description...',
+                'maxlength': '45'
             }),
             'title': forms.TextInput(attrs={
                 'placeholder': 'Recipe Title',

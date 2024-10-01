@@ -5,7 +5,7 @@
     <h2>Create a New Recipe</h2>
     <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
-        {{ form.as_p }}  <!-- This will display the form fields in a paragraph format -->
+        {{ form.as_p }}
         <button type="submit" class="btn btn-primary">Submit Recipe</button>
     </form>
 </div>
