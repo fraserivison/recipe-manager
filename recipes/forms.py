@@ -43,6 +43,6 @@ class RecipeForm(forms.ModelForm):
 
 def clean_description(self):
         description = self.cleaned_data.get('description')
-        if len(description) < 10:  # Example: Minimum length of 10 characters
-            raise forms.ValidationError('Description must be at least 10 characters long.')
+        if len(description) > 45:
+            raise forms.ValidationError('Description must be at least less than 45 characters long.')
         return description
