@@ -1,6 +1,31 @@
 from django import forms
 from .models import Recipe
 
+CATEGORY_CHOICES = [
+    ('Appetiser', 'Appetiser'),
+    ('Main Course', 'Main Course'),
+    ('Dessert', 'Dessert'),
+    ('Soup', 'Soup'),
+    ('Salad', 'Salad'),
+    ('Snack', 'Snack'),
+    ('Breakfast', 'Breakfast'),
+    ('Brunch', 'Brunch'),
+    ('Baking', 'Baking'),
+    ('Beverage', 'Beverage'),
+    ('Side Dish', 'Side Dish'),
+    ('Vegetarian', 'Vegetarian'),
+    ('Vegan', 'Vegan'),
+    ('Gluten-Free', 'Gluten-Free'),
+    ('Pasta', 'Pasta'),
+    ('Rice', 'Rice'),
+    ('Grilled', 'Grilled'),
+    ('Tray Bake', 'Tray Bake'),
+    ('Stir-Fry', 'Stir-Fry'),
+    ('Slow Cooker', 'Slow Cooker'),
+    ('Seafood', 'Seafood'),
+    ('Ethnic Cuisine', 'Ethnic Cuisine'),
+]
+
 class RecipeForm(forms.ModelForm):
     class Meta:
         model = Recipe
@@ -37,10 +62,8 @@ class RecipeForm(forms.ModelForm):
             'servings': forms.NumberInput(attrs={
                 'placeholder': 'Number of servings',
             }),
-            'category': forms.TextInput(attrs={
-                'placeholder': 'Recipe category',
-            }),
-        }
+            'category': forms.Select(choices=CATEGORY_CHOICES),
+            }
 
 def clean_description(self):
         description = self.cleaned_data.get('description')
