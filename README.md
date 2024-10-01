@@ -248,6 +248,8 @@ Key files:
 ---
 
 ## Credits
+- Images used in this project were sourced from Google Images. All images are for illustrative purposes only and may be subject to copyright.
+
 
 - **Libraries and Frameworks**:  
   - Django  
