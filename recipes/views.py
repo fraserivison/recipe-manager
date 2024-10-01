@@ -36,7 +36,7 @@ def create_recipe(request):
     else:
         form = RecipeForm()
     
-    return render(request, 'create_recipe.html', {'form': form})   
+    return render(request, 'recipes/create_recipe.html', {'form': form})   
 
 # Custom login view using allauth
 class LoginView(AllauthLoginView):
