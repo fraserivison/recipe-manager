@@ -39,7 +39,7 @@ SECRET_KEY = 'django-insecure-4jr%w@yzuds+jccbi!0e=q2(2l-u&_epob@bc(0!nr(3lm)8i6
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['8000-fraserivison-sizzle-0yosmcb7l6q.ws-eu116.gitpod.io','.herokuapp.com'
+ALLOWED_HOSTS = ['8000-fraserivison-sizzle-0yosmcb7l6q.ws-eu116.gitpod.io','sizzle-recipe-manager.herokuapp.com'
 ]
 
 AUTHENTICATION_BACKENDS = (
@@ -84,6 +84,7 @@ LOGOUT_REDIRECT_URL = '/'
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -123,7 +124,7 @@ DATABASES = {
 
 CSRF_TRUSTED_ORIGINS = [
     "https://*.codeinstitute-ide.net/",
-    "https://*.herokuapp.com",
+    "https://sizzle-recipe-manager.herokuapp.com",
     "https://8000-fraserivison-sizzle-0yosmcb7l6q.ws-eu116.gitpod.io",
 ]
 
@@ -160,9 +161,12 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
-
 STATIC_URL = '/static/'
 
+# Path where static files will be collected for production
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+# Additional static files settings
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'assets'),
 ]
