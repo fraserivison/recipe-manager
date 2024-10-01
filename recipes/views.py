@@ -1,7 +1,9 @@
 from django.shortcuts import render, get_object_or_404
 from django.core.paginator import Paginator
+from django.contrib.auth.decorators import login_required
 from allauth.account.views import LoginView as AllauthLoginView, SignupView as AllauthSignupView, LogoutView as AllauthLogoutView
 from .models import Recipe
+from .forms import RecipeForm
 
 # Home page view (no recipes displayed here)
 def index(request):
@@ -20,6 +22,21 @@ def recipe_list(request):
 def recipe_detail(request, slug):
     recipe = get_object_or_404(Recipe, slug=slug)
     return render(request, 'recipes/recipe_detail.html', {'recipe': recipe})    
+
+# Create recipe view
+@login_required  # Require user to be logged in to access this view
+def create_recipe(request):
+    if request.method == 'POST':
+        form = RecipeForm(request.POST, request.FILES)  # Include request.FILES for image uploads
+        if form.is_valid():
+            recipe = form.save(commit=False)  # Create a Recipe instance but don't save to DB yet
+            recipe.author = request.user  # Set the author to the logged-in user
+            recipe.save()  # Now save the Recipe instance
+            return redirect('recipe_list')  # Redirect to the recipe list page
+    else:
+        form = RecipeForm()
+    
+    return render(request, 'create_recipe.html', {'form': form})   
 
 # Custom login view using allauth
 class LoginView(AllauthLoginView):
