@@ -8,6 +8,7 @@
     - [Structure](#structure)
     - [Skeleton](#skeleton)
     - [Surface](#surface)
+    - [User Experience Enhancements](#user-experience-enhancements)
 3. [Agile Development](#agile-development)
     - [Epics](#epics)
     - [User Stories](#user-stories)
@@ -66,7 +67,39 @@ Wireframes were used during the design phase to ensure the layout is clear and r
 ### Surface
 The visual design follows modern design principles, utilising Bootstrap to ensure responsiveness and accessibility. The colour scheme and typography were chosen to reflect a clean and minimalistic approach.
 
+### User Experience Enhancements
+
+#### URL Slugs for Recipe Details
+To enhance the user experience and improve SEO (Search Engine Optimisation), we implemented a URL slug feature for individual recipe pages. Instead of displaying the recipe ID or a generic query parameter in the URL, users can now see a human-readable URL that includes the recipe title. This not only makes the URLs more descriptive but also easier to share.
+
+For example, when a user clicks on a recipe, the URL changes from:
+
+`/recipes/1` to `/recipes/chocolate-chip-cookies`
+
+**Steps taken:**
+1. **Slug Field in the Model:** We added a slug field to the `Recipe` model, which automatically generates a URL-friendly version of the recipe title.
+2. **Slug Generation:** Slugs are generated using Django's `slugify` function when a recipe is created or updated.
+3. **URL Configuration:** The recipe detail page's URL pattern was updated to accept slugs instead of the numeric ID, ensuring a cleaner and more user-friendly URL structure.
+4. **Navigation Links Updated:** All links to individual recipes were updated to point to the new slug-based URLs.
+
+This enhancement improves the website's usability, makes URLs more memorable, and optimizes the site for search engines.
 ---
+
+#### Pagination for Recipes
+We implemented pagination to break down the list of recipes into multiple pages. This improves loading performance and provides a more structured browsing experience for users. By default, the recipe listing page now shows a limited number of recipes per page, with controls to navigate between pages.
+
+#### Cloudinary Integration
+We integrated Cloudinary for image hosting, which allows you to upload and display high-quality images for recipes. This enhances the visual appeal of the site, especially on the recipe detail pages, where images are displayed.
+
+#### Heroku Deployment
+The project is deployed on Heroku, and we ensured that the necessary environment variables (like the Cloudinary API keys) are set correctly in Heroku’s configuration to support image hosting and ensure smooth functionality.
+
+#### Dropdown Menu for Recipe Categories
+A dropdown menu was added to allow users to view and select categories when they visit a recipe’s page. This categorisation helps users quickly identify and navigate between different types of recipes, like “Dessert,” “Main Course,” or “Vegetarian.”
+
+#### Fixing Static File and CSS Issues on Heroku
+We encountered issues with CSS and image formatting when deployed to Heroku. These issues were resolved by ensuring that static files were properly collected and that Cloudinary image URLs were correctly configured.
+
 
 ## Agile Development
 
@@ -111,6 +144,7 @@ Sizzle includes the following key features:
 The following Entity Relationship Diagram (ERD) illustrates the data model for the Sizzle application, showcasing the relationships between different entities.
 
 <img src="assets/erd.png" alt="ERD Diagram" width="350px">
+<p>Entity Relationship Diagram (ERD).</p>
 
 ### Description of Entities
 
