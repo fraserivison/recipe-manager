@@ -1,41 +1,63 @@
 {% extends 'base.html' %}
 
+{% load widget_tweaks %}
+
 {% block content %}
 <div class="container">
-    <h2>Create a New Recipe</h2>
+    <h2 class="mt-4">Create a New Recipe</h2>
     <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
 
+    <div class="form-group">
         <!-- Title Field -->
-        {{ form.title }}
+        <label for="{{ form.title.id_for_label }}">Recipe Title</label>
+        {{ form.title|add_class:"form-control" }}
         <small class="form-text text-muted">{{ form.title.help_text }}</small>
+    </div>
 
+    <div class="form-group">
         <!-- Description Field -->
-        {{ form.description }}
+        <label for="{{ form.description.id_for_label }}">Description</label>
+        {{ form.description|add_class:"form-control" }}
         <small class="form-text text-muted">{{ form.description.help_text }}</small>
+    </div>
 
+    <div class="form-group">
         <!-- Ingredients Field -->
-        {{ form.ingredients }}
+        <label for="{{ form.ingredients.id_for_label }}">Ingredients</label>
+        {{ form.ingredients|add_class:"form-control" }}
         <small class="form-text text-muted">{{ form.ingredients.help_text }}</small>
+    </div>
 
+    <div class="form-group">
         <!-- Instructions Field -->
-        {{ form.instructions }}
+        <label for="{{ form.instructions.id_for_label }}">Instructions</label>
+        {{ form.instructions|add_class:"form-control" }}
         <small class="form-text text-muted">{{ form.instructions.help_text }}</small>
+    </div>
 
+    <div class="form-group">
         <!-- Cooking Time Field -->
-        {{ form.cooking_time }}
+        <label for="{{ form.cooking_time.id_for_label }}">Cooking Time (in minutes)</label>
+        {{ form.cooking_time|add_class:"form-control" }}
         <small class="form-text text-muted">{{ form.cooking_time.help_text }}</small>
+    </div>
 
+    <div class="form-group">
         <!-- Servings Field -->
-        {{ form.servings }}
+        <label for="{{ form.servings.id_for_label }}">Number of Servings</label>
+        {{ form.servings|add_class:"form-control" }}
         <small class="form-text text-muted">{{ form.servings.help_text }}</small>
+    </div>
 
+    <div class="form-group">
         <!-- Category Field -->
-        {{ form.category }}
+        <label for="{{ form.category.id_for_label }}">Category</label>
+        {{ form.category|add_class:"form-control" }}
         <small class="form-text text-muted">{{ form.category.help_text }}</small>
+    </div>
 
-        <button type="submit" class="btn btn-primary">Submit Recipe</button>
-    </form>
+<button type="submit" class="btn btn-primary">Submit Recipe</button>
+</form>
 </div>
 {% endblock %}
-
