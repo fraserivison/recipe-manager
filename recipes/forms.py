@@ -27,6 +27,35 @@ CATEGORY_CHOICES = [
 ]
 
 class RecipeForm(forms.ModelForm):
+    title = forms.CharField(
+        widget=forms.TextInput(attrs={'placeholder': 'Enter the name here...', 'class': 'form-control'})
+    )
+    description = forms.CharField(
+        widget=forms.Textarea(attrs={
+            'rows': 1,
+            'style': 'resize: none;',
+            'maxlength': '45',
+            'placeholder': 'Enter a brief description...',
+            'class': 'form-control'
+        })
+    )
+    ingredients = forms.CharField(
+        widget=forms.Textarea(attrs={'placeholder': 'List ingredients (one per line)', 'class': 'form-control'})
+    )
+    instructions = forms.CharField(
+        widget=forms.Textarea(attrs={'placeholder': 'Enter step-by-step instructions (one step per line)', 'class': 'form-control'})
+    )
+    cooking_time = forms.IntegerField(
+        widget=forms.NumberInput(attrs={'class': 'form-control'})
+    )
+    servings = forms.IntegerField(
+        widget=forms.NumberInput(attrs={'class': 'form-control'})
+    )
+    category = forms.ChoiceField(
+        choices=CATEGORY_CHOICES,
+        widget=forms.Select(attrs={'class': 'form-control'})
+    )
+
     class Meta:
         model = Recipe
         fields = [
@@ -40,41 +69,9 @@ class RecipeForm(forms.ModelForm):
             'category',
             'status'
         ]
-        widgets = {
-            'description': forms.Textarea(attrs={
-                'rows': 1,
-                'style': 'resize: none;',
-                'placeholder': 'Enter a brief description...',
-                'maxlength': '45'
-            }),
-            'title': forms.TextInput(attrs={
-                'placeholder': 'Recipe Title',
-            }),
-            'ingredients': forms.Textarea(attrs={
-                'placeholder': 'List ingredients (one per line)',
-            }),
-            'instructions': forms.Textarea(attrs={
-                'placeholder': 'Enter step-by-step instructions (one step per line)',
-            }),
-            'cooking_time': forms.NumberInput(attrs={
-                'placeholder': 'Cooking time (in minutes)',
-            }),
-            'servings': forms.NumberInput(attrs={
-                'placeholder': 'Number of servings',
-            }),
-            'category': forms.Select(choices=CATEGORY_CHOICES),
-            }
 
-        title = forms.CharField(help_text='Enter the title of the recipe.')
-        description = forms.CharField(help_text='Enter a brief description of the recipe, less than 45 characters.')
-        ingredients = forms.CharField(help_text='List each ingredient on a new line, e.g.,\n- Ingredient 1\n- Ingredient 2.')
-        instructions = forms.CharField(help_text='List each step of the cooking process on a new line- numbers will show up automatically e.g.,\n Preheat the oven.\n Mix ingredients.')
-        cooking_time = forms.IntegerField(help_text='Enter the cooking time in minutes.')
-        servings = forms.IntegerField(help_text='Enter the number of servings the recipe makes.')
-        category = forms.ChoiceField(help_text='Select a category for the recipe.')
-
-def clean_description(self):
+    def clean_description(self):
         description = self.cleaned_data.get('description')
         if len(description) > 45:
-            raise forms.ValidationError('Description must be at least less than 45 characters long.')
+            raise forms.ValidationError('Description must be less than 45 characters long.')
         return description
