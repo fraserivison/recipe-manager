@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from django.core.paginator import Paginator # just added
+from django.core.paginator import Paginator
 from allauth.account.views import LoginView as AllauthLoginView, SignupView as AllauthSignupView, LogoutView as AllauthLogoutView
 from .models import Recipe
 
@@ -10,17 +10,16 @@ def index(request):
 # Recipes list view (renders the recipes.html template)
 def recipe_list(request):
     recipes = Recipe.objects.all()
-    paginator = Paginator(recipes, 6)  # Show 6 recipes per page
-
+    paginator = Paginator(recipes, 14)  # Show 14 recipes per page
     page_number = request.GET.get('page')  # Get the current page number from the request
     page_obj = paginator.get_page(page_number)  # Get the recipes for the current page
 
     return render(request, 'recipes.html', {'page_obj': page_obj})
 
 # Recipe detail view
-def recipe_detail(request, recipe_id):
-    recipe = get_object_or_404(Recipe, id=recipe_id)
-    return render(request, 'recipe_detail.html', {'recipe': recipe})    
+def recipe_detail(request, slug):
+    recipe = get_object_or_404(Recipe, slug=slug)
+    return render(request, 'recipes/recipe_detail.html', {'recipe': recipe})    
 
 # Custom login view using allauth
 class LoginView(AllauthLoginView):
