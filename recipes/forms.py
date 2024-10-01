@@ -2,6 +2,7 @@ from django import forms
 from .models import Recipe
 
 CATEGORY_CHOICES = [
+    ('', 'Select a category'),
     ('Appetiser', 'Appetiser'),
     ('Main Course', 'Main Course'),
     ('Dessert', 'Dessert'),
@@ -46,10 +47,10 @@ class RecipeForm(forms.ModelForm):
         widget=forms.Textarea(attrs={'placeholder': 'Enter step-by-step instructions (one step per line)', 'class': 'form-control'})
     )
     cooking_time = forms.IntegerField(
-        widget=forms.NumberInput(attrs={'class': 'form-control'})
+        widget=forms.NumberInput(attrs={'placeholder': 'Enter a number', 'class': 'form-control'})
     )
     servings = forms.IntegerField(
-        widget=forms.NumberInput(attrs={'class': 'form-control'})
+        widget=forms.NumberInput(attrs={'placeholder': 'Enter a number', 'class': 'form-control'})
     )
     category = forms.ChoiceField(
         choices=CATEGORY_CHOICES,

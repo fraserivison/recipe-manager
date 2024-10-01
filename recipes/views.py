@@ -12,7 +12,7 @@ def index(request):
 # Recipes list view (renders the recipes.html template)
 def recipe_list(request):
     recipes = Recipe.objects.all()
-    paginator = Paginator(recipes, 14)  # Show 14 recipes per page
+    paginator = Paginator(recipes, 6)  # Show 14 recipes per page
     page_number = request.GET.get('page')  # Get the current page number from the request
     page_obj = paginator.get_page(page_number)  # Get the recipes for the current page
 
