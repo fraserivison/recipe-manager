@@ -14,11 +14,16 @@
     </div>
     {% endif %}
 
-    <!-- {% if form.errors %}
+    {% if form.errors %}
     <div class="alert alert-danger">
         <strong>Please correct the errors below:</strong>
+        <ul>
+            {% for field, errors in form.errors.items %}
+            <li>{{ field }}: {{ errors|join:", " }}</li>
+            {% endfor %}
+        </ul>
     </div>
-    {% endif %} -->
+    {% endif %}
 
     <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}

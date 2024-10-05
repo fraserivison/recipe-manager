@@ -17,8 +17,6 @@ class Recipe(models.Model):
     category = models.CharField(max_length=100, null=True, blank=True)
     average_rating = models.FloatField(default=0)
     created_on = models.DateTimeField(auto_now_add=True)
-    STATUS = ((0, "Draft"), (1, "Published"))
-    status = models.IntegerField(choices=STATUS, default=0)
 
     # Meta class to define ordering of records
     class Meta:

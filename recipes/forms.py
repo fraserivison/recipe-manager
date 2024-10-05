@@ -67,8 +67,7 @@ class RecipeForm(forms.ModelForm):
             'instructions',
             'cooking_time',
             'servings',
-            'category',
-            'status'
+            'category'
         ]
 
     def clean_description(self):

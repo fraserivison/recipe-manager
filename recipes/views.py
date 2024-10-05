@@ -5,6 +5,8 @@ from django.contrib import messages
 from allauth.account.views import LoginView as AllauthLoginView, SignupView as AllauthSignupView, LogoutView as AllauthLogoutView
 from .models import Recipe
 from .forms import RecipeForm
+from django.utils.text import slugify
+import uuid
 
 # Home page view (no recipes displayed here)
 def index(request):
@@ -28,10 +30,17 @@ def recipe_detail(request, slug):
 @login_required  # Require user to be logged in to access this view
 def create_recipe(request):
     if request.method == 'POST':
+        print("Form submitted")  # Debug statement
         form = RecipeForm(request.POST, request.FILES)
         if form.is_valid():
             recipe = form.save(commit=False)
             recipe.author = request.user
+
+            unique_slug = slugify(recipe.title)
+            while Recipe.objects.filter(slug=unique_slug).exists():
+                unique_slug = f"{slugify(recipe.title)}-{uuid.uuid4().hex[:6]}"  # Append a unique identifier
+            
+            recipe.slug = unique_slug
             recipe.save()
             messages.success(request, 'Recipe added successfully!')
             return redirect('recipe_list')
