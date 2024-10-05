@@ -4,6 +4,15 @@
 
 {% block content %}
 <div class="container mt-5">
+   
+    {% if messages %}
+        <div class="alert alert-success">
+            {% for message in messages %}
+                {{ message }}
+            {% endfor %}
+        </div>
+    {% endif %}
+
     <h1>{{ recipe.title }}</h1>
     {% if recipe.featured_image %}
     <img src="{{ recipe.featured_image.url }}" alt="{{ recipe.title }}">

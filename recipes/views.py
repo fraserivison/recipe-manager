@@ -30,7 +30,6 @@ def recipe_detail(request, slug):
 @login_required  # Require user to be logged in to access this view
 def create_recipe(request):
     if request.method == 'POST':
-        print("Form submitted")  # Debug statement
         form = RecipeForm(request.POST, request.FILES)
         if form.is_valid():
             recipe = form.save(commit=False)
