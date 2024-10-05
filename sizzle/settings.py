@@ -127,12 +127,15 @@ DATABASES = {
 
 import sys
 
-# SQLite for testing
-if 'test' in sys.argv:
+if 'HEROKU' in os.environ:
+    DATABASES = {
+        'default': dj_database_url.config(default=os.environ.get('DATABASE_URL'))
+    }
+else:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': ':memory:',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
         }
     }
 
