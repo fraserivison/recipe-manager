@@ -7,6 +7,16 @@
 {% block content %}
 <div class="container mt-5">
     <h1 class="text-center">Recipes</h1>
+
+     <!-- Confirmation message -->
+     {% if messages %}
+     <div class="alert alert-success" role="alert">
+         {% for message in messages %}
+             {{ message }}
+         {% endfor %}
+     </div>
+ {% endif %}
+
     <div class="row">
         {% for recipe in page_obj %}
         <div class="col-md-4">
