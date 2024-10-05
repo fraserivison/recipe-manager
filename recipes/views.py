@@ -47,7 +47,34 @@ def create_recipe(request):
     else:
         form = RecipeForm()
     
-    return render(request, 'recipes/create_recipe.html', {'form': form})   
+    return render(request, 'recipes/create_recipe.html', {'form': form})
+
+# Recipe edit view
+@login_required
+def edit_recipe(request, slug):
+    recipe = get_object_or_404(Recipe, slug=slug)
+    if request.method == 'POST':
+        form = RecipeForm(request.POST, request.FILES, instance=recipe)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Recipe updated successfully!')
+            return redirect('recipe_detail', slug=recipe.slug)
+        else:
+            messages.error(request, 'Please correct the errors below.')
+    else:
+        form = RecipeForm(instance=recipe)
+
+    return render(request, 'recipes/edit_recipe.html', {'form': form, 'recipe': recipe, 'title': 'Edit Recipe'})
+
+# Recipe delete view
+@login_required
+def delete_recipe(request, slug):
+    recipe = get_object_or_404(Recipe, slug=slug)
+    if request.method == 'POST':
+        recipe.delete()
+        messages.success(request, 'Recipe deleted successfully!')
+        return redirect('recipe_list')
+    return render(request, 'recipes/delete_recipe.html', {'recipe': recipe, 'title': 'Delete Recipe'})    
 
 # Custom login view using allauth
 class LoginView(AllauthLoginView):

@@ -19,7 +19,7 @@
 6. [Testing](#testing)
     - [Automated Testing](#automated-testing)
     - [Manual Testing](#manual-testing)
-    - [Unresolved Bugs](#unresolved-bugs)
+    - [Bug Fixes](#bug-fixes)
 7. [Deployment](#deployment)
 8. [Project Setup](#project-setup)
 9. [Version Control](#version-control)

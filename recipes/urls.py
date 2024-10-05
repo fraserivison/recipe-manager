@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import LoginView, SignupView, recipe_detail, recipe_list, create_recipe
+from .views import LoginView, SignupView, recipe_detail, recipe_list, create_recipe, edit_recipe, delete_recipe
 from allauth.account.views import LogoutView
 from . import views
 
@@ -11,4 +11,6 @@ urlpatterns = [
     path('accounts/signup/', SignupView.as_view(), name='account_signup'), # Signup page
     path('accounts/logout/', LogoutView.as_view(), name='account_logout'), # Logout page
     path('create/', create_recipe, name='create_recipe'),  # Create recipe page
+    path('recipes/edit/<slug:slug>/', edit_recipe, name='edit_recipe'),
+    path('recipes/delete/<slug:slug>/', delete_recipe, name='delete_recipe')
     ]

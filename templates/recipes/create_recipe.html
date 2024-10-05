@@ -6,7 +6,7 @@
 <div class="container">
     <h2 class="mt-4">Create a New Recipe</h2>
 
-    {% if form.errors %}
+    <!-- {% if form.errors %}
     <div class="alert alert-danger">
         <strong>Please correct the errors below:</strong>
         <ul>
@@ -15,7 +15,7 @@
             {% endfor %}
         </ul>
     </div>
-    {% endif %}
+    {% endif %} -->
 
     <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
@@ -28,7 +28,7 @@
 
         <div class="form-group"></div>
             <!-- Featured Image Field -->
-            <label for="{{ form.featured_image.id_for_label }}">Featured Image</label>
+            <label for="{{ form.featured_image.id_for_label }}">Image</label>
             {{ form.featured_image|add_class:"form-control-file" }}
             <small class="form-text text-muted">Upload an image for the recipe.</small>
         </div>
