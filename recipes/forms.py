@@ -1,5 +1,5 @@
 from django import forms
-from .models import Recipe
+from .models import Recipe, Rating
 
 CATEGORY_CHOICES = [
     ('', 'Select a category'),
@@ -68,10 +68,24 @@ class RecipeForm(forms.ModelForm):
             'cooking_time',
             'servings',
             'category'
-        ]
+            ]
 
     def clean_description(self):
         description = self.cleaned_data.get('description')
         if len(description) > 45:
             raise forms.ValidationError('Description must be less than 45 characters long.')
         return description
+
+class RatingForm(forms.ModelForm):
+    class Meta:
+        model = Rating
+        fields = ['score']
+        widgets = {
+            'score': forms.Select(choices=[
+                (1, '1 Star'),
+                (2, '2 Stars'),
+                (3, '3 Stars'),
+                (4, '4 Stars'),
+                (5, '5 Stars'),
+            ]),
+        }

@@ -39,8 +39,19 @@
     <p><strong>Servings:</strong> {{ recipe.servings }}</p>
     <p><strong>Category:</strong> {{ recipe.get_category_display }}</p>
 
-    <h3>User Ratings:</h3>
-    <p>Average Rating: {{ recipe.average_rating }}</p>
+    <h3>Average Rating:</h3>
+    {% if recipe.average_rating %}
+    <p>{{ recipe.average_rating|floatformat:1 }} / 5</p>
+    {% else %}
+    <p>This recipe has not been rated yet.</p>
+    {% endif %}
+
+    <h3>Rate this Recipe</h3>
+    <form method="post">
+        {% csrf_token %}
+        {{ rating_form.as_p }}
+        <button type="submit" class="btn btn-primary">Submit Rating</button>
+    </form>
 
     <!-- Social Share Buttons -->
     <div class="social-share mt-4">

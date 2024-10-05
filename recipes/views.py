@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from allauth.account.views import LoginView as AllauthLoginView, SignupView as AllauthSignupView, LogoutView as AllauthLogoutView
 from .models import Recipe
-from .forms import RecipeForm
+from .forms import RecipeForm, RatingForm
 from django.utils.text import slugify
 import uuid
 
@@ -24,10 +24,26 @@ def recipe_list(request):
 # Recipe detail view
 def recipe_detail(request, slug):
     recipe = get_object_or_404(Recipe, slug=slug)
-    return render(request, 'recipes/recipe_detail.html', {'recipe': recipe})    
+    if request.method == 'POST':
+        rating_form = RatingForm(request.POST)
+        if rating_form.is_valid():
+            rating = rating_form.save(commit=False)
+            rating.recipe = recipe
+            rating.user = request.user
+            rating.save()
+            recipe.update_average_rating()
+            messages.success(request, 'Your rating has been submitted!')
+            return redirect('recipe_detail', slug=slug)
+    else:
+        rating_form = RatingForm()
+
+    return render(request, 'recipes/recipe_detail.html', {
+        'recipe': recipe,
+        'rating_form': rating_form,
+    })    
 
 # Create recipe view
-@login_required  # Require user to be logged in to access this view
+@login_required
 def create_recipe(request):
     if request.method == 'POST':
         form = RecipeForm(request.POST, request.FILES)

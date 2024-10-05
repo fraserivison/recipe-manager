@@ -15,8 +15,9 @@ class Recipe(models.Model):
     cooking_time = models.IntegerField()
     servings = models.IntegerField()
     category = models.CharField(max_length=100, null=True, blank=True)
-    average_rating = models.FloatField(default=0)
     created_on = models.DateTimeField(auto_now_add=True)
+    average_rating = models.FloatField(default=0)
+
 
     # Meta class to define ordering of records
     class Meta:
@@ -25,7 +26,34 @@ class Recipe(models.Model):
     def save(self, *args, **kwargs):
         if not self.slug:
             self.slug = slugify(self.title)
-        super().save(*args, **kwargs)    
+        super().save(*args, **kwargs)
+
+    def update_average_rating(self):
+        ratings = self.ratings.all()
+        if ratings.exists():
+            total_score = sum(rating.score for rating in ratings)
+            average_score = total_score / ratings.count()
+            self.average_rating = average_score
+        else:
+            self.average_rating = 0
+        self.save()     
 
     def __str__(self):
         return f"{self.title} by {self.author}"
+
+class Rating(models.Model):
+    recipe = models.ForeignKey('Recipe', on_delete=models.CASCADE, related_name='ratings')
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='ratings')
+    score = models.IntegerField(choices=[
+    (1, '1 Star'),
+    (2, '2 Stars'),
+    (3, '3 Stars'),
+    (4, '4 Stars'),
+    (5, '5 Stars'),
+    ])
+
+    class Meta:
+        unique_together = ('recipe', 'user')
+
+    def __str__(self):
+        return f"{self.user.username} rated {self.recipe.title} - {self.score}"    
