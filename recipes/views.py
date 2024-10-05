@@ -15,31 +15,43 @@ def index(request):
 # Recipes list view (renders the recipes.html template)
 def recipe_list(request):
     recipes = Recipe.objects.all()
-    paginator = Paginator(recipes, 6)  # Show 14 recipes per page
-    page_number = request.GET.get('page')  # Get the current page number from the request
-    page_obj = paginator.get_page(page_number)  # Get the recipes for the current page
+    paginator = Paginator(recipes, 9)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
 
     return render(request, 'recipes.html', {'page_obj': page_obj})
 
 # Recipe detail view
 def recipe_detail(request, slug):
     recipe = get_object_or_404(Recipe, slug=slug)
+
+    existing_rating = recipe.ratings.filter(user=request.user).first()
+
     if request.method == 'POST':
         rating_form = RatingForm(request.POST)
         if rating_form.is_valid():
+            if existing_rating:
+                # Update the existing rating
+                existing_rating.score = rating_form.cleaned_data['score']
+                existing_rating.save()
+                messages.success(request, 'Your rating has been updated!')
+        else:        
             rating = rating_form.save(commit=False)
             rating.recipe = recipe
             rating.user = request.user
             rating.save()
-            recipe.update_average_rating()
             messages.success(request, 'Your rating has been submitted!')
-            return redirect('recipe_detail', slug=slug)
+
+        recipe.update_average_rating()
+        return redirect('recipe_detail', slug=slug)
+   
     else:
         rating_form = RatingForm()
 
     return render(request, 'recipes/recipe_detail.html', {
         'recipe': recipe,
         'rating_form': rating_form,
+        'existing_rating': existing_rating,
     })    
 
 # Create recipe view
@@ -53,7 +65,7 @@ def create_recipe(request):
 
             unique_slug = slugify(recipe.title)
             while Recipe.objects.filter(slug=unique_slug).exists():
-                unique_slug = f"{slugify(recipe.title)}-{uuid.uuid4().hex[:6]}"  # Append a unique identifier
+                unique_slug = f"{slugify(recipe.title)}-{uuid.uuid4().hex[:6]}"
             
             recipe.slug = unique_slug
             recipe.save()
