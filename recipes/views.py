@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.core.paginator import Paginator
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 from allauth.account.views import LoginView as AllauthLoginView, SignupView as AllauthSignupView, LogoutView as AllauthLogoutView
 from .models import Recipe
 from .forms import RecipeForm
@@ -27,12 +28,13 @@ def recipe_detail(request, slug):
 @login_required  # Require user to be logged in to access this view
 def create_recipe(request):
     if request.method == 'POST':
-        form = RecipeForm(request.POST, request.FILES)  # Include request.FILES for image uploads
+        form = RecipeForm(request.POST, request.FILES)
         if form.is_valid():
-            recipe = form.save(commit=False)  # Create a Recipe instance but don't save to DB yet
-            recipe.author = request.user  # Set the author to the logged-in user
-            recipe.save()  # Now save the Recipe instance
-            return redirect('recipe_list')  # Redirect to the recipe list page
+            recipe = form.save(commit=False)
+            recipe.author = request.user
+            recipe.save()
+            messages.success(request, 'Recipe added successfully!')
+            return redirect('recipe_list')
     else:
         form = RecipeForm()
     
