@@ -161,6 +161,8 @@ The database is a PostgreSQL relational database, fully normalised, with three c
 
 ## Testing
 
+Test update to trigger a commit.
+
 ### Automated Testing
 
 Automated testing is an essential part of the development process in this Recipe Manager project. It ensures that the application behaves as expected and allows us to identify and fix issues quickly. We utilise Django's built-in testing framework to create comprehensive tests for various components of the application, covering both forms and views.The implemented tests cover critical functionalities of the Recipe Manager, contributing to the overall reliability of the application. Regularly running these tests helps to identify regressions and maintain the integrity of the application as new features are added.
