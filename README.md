@@ -161,6 +161,63 @@ The database is a PostgreSQL relational database, fully normalised, with three c
 
 ## Testing
 
+### Automated Testing
+
+Automated testing is an essential part of the development process in this Recipe Manager project. It ensures that the application behaves as expected and allows us to identify and fix issues quickly. We utilise Django's built-in testing framework to create comprehensive tests for various components of the application, covering both forms and views.The implemented tests cover critical functionalities of the Recipe Manager, contributing to the overall reliability of the application. Regularly running these tests helps to identify regressions and maintain the integrity of the application as new features are added.
+
+#### Test Cases Implemented
+
+1. **Recipe Form Tests:**
+   - **Valid Recipe Form Test:** 
+     - This test checks that the recipe form can successfully accept valid input data. The specific fields validated include:
+       - Title
+       - Description
+       - Ingredients
+       - Instructions
+       - Cooking Time
+       - Servings
+       - Category
+       - Status
+     - The test ensures that the form is valid and that the cleaned data matches the expected values.
+   - **Invalid Recipe Form Test:**
+     - This test verifies the form's behaviour with invalid data, checking for:
+       - Title length exceeding the character limit.
+       - Description length exceeding the limit.
+       - Missing ingredients and instructions.
+       - Negative values for cooking time and servings.
+       - Missing category.
+     - The test ensures that appropriate error messages are returned for each invalid field.
+
+2. **Slug Generation Tests:**
+   - **Slug Creation on Save:**
+     - This test ensures that a slug is automatically generated from the recipe title upon saving the recipe.
+     - It also checks that the `featured_image` field contains the expected URL format.
+     - **Change Made:** During testing, we used a mocked image URL from Cloudinary (`http://example.com/fake-image.jpg`) to simulate image uploads, reflecting our integration with Cloudinary while maintaining a consistent testing environment.
+
+3. **Recipe View Tests:**
+   - **Create Recipe View Test:**
+     - This test verifies that the recipe creation view is accessible and functions correctly for logged-in users.
+     - It ensures that the user is redirected to the login page if they attempt to access the recipe creation page while logged out.
+   - **Recipe List View Pagination Test:**
+     - This test checks that the pagination feature of the recipe list view works as intended, ensuring that a set number of recipes (6 in this case) is displayed per page.
+   - **Recipe Detail View Test:**
+     - This test confirms that the recipe detail view retrieves the correct recipe based on its slug and displays its title accurately.
+
+4. **Authentication Tests:**
+   - **Signup View Test:**
+     - This test verifies that new users can successfully register through the signup view.
+     - It checks that upon successful signup, users are redirected appropriately.
+   - **Login View Test:**
+     - This test confirms that registered users can log in and are redirected to the correct page.
+   - **Access Control Test for Create Recipe:**
+     - This test ensures that only authenticated users can access the recipe creation page, reinforcing security in the application.
+
+#### Changes Made
+
+- **Mocking Cloudinary Uploads:** 
+  - To streamline testing and avoid dependencies on external services, we implemented mocks for Cloudinary's upload functionality. By using a placeholder image URL (`http://example.com/fake-image.jpg`), we could simulate image uploads without requiring actual file uploads during tests. This adjustment ensured that our tests remained fast and reliable.
+
+
 ### Manual Testing
 
 #### User Model Testing
@@ -227,11 +284,25 @@ The navigation bar was tested to ensure smooth user navigation:
 
 - **Navigation Bar:** The navigation bar is functional on all pages, and users can access all areas of the site seamlessly.
 
-### Automated Testing
-***Add information on automated testing here.
+### Bug Fixes
 
-### Bugs and Fixes
-***Add any bugs discovered and how they were resolved.
+Throughout the development of the Recipe Manager project, several bugs and issues were identified and resolved to enhance the application's functionality and user experience. Below are the notable bugs that were fixed along with the solutions implemented:
+
+#### 1. **Image Display Issues on Heroku**
+   - **Issue:** Images uploaded using Cloudinary were not displaying correctly on Heroku, appearing distorted or missing entirely.
+   - **Solution:** The issue was traced back to the incorrect formatting of Cloudinary URLs in the application. By reviewing the code that handled image URLs, we ensured that the correct Cloudinary image path was used and removed any unnecessary transformations. This adjustment allowed the images to render correctly in the deployed application.
+
+#### 2. **User Authentication Issues**
+   - **Issue:** Users experienced difficulties logging in or signing up, particularly related to username handling.
+   - **Solution:** After implementing Django Allauth for authentication, we found that usernames were not being saved correctly. We addressed this by setting `ACCOUNT_USERNAME_REQUIRED = True` in the `settings.py` file, ensuring that usernames were mandatory during the signup process. This change allowed for smoother user registration and login experiences.
+
+#### 3. **Pagination in Recipe List View**
+   - **Issue:** The pagination functionality for the recipe list view was not returning the expected number of recipes per page.
+   - **Solution:** We discovered that the view function was not correctly passing the paginated object to the template. By updating the view to properly handle pagination, we ensured that the correct number of recipes (6 per page) was displayed, enhancing usability for users browsing through multiple recipes.
+
+#### 4. **Slug Generation Failures**
+   - **Issue:** Slugs for recipes were not being generated as expected upon saving new recipes.
+   - **Solution:** We implemented unit tests to verify the slug generation logic. After identifying that the slug was not being created consistently, we modified the recipe model to ensure that the slug was derived from the recipe title during the save process. This fix improved the consistency of recipe URLs, making them more user-friendly.
 
 
 ## Deployment
