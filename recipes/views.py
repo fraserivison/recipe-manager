@@ -71,6 +71,7 @@ def edit_recipe(request, slug):
 def delete_recipe(request, slug):
     recipe = get_object_or_404(Recipe, slug=slug)
     if request.method == 'POST':
+        print("Delete function triggered")
         recipe.delete()
         messages.success(request, 'Recipe deleted successfully!')
         return redirect('recipe_list')

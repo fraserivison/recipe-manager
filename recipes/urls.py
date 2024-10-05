@@ -12,5 +12,5 @@ urlpatterns = [
     path('accounts/logout/', LogoutView.as_view(), name='account_logout'), # Logout page
     path('create/', create_recipe, name='create_recipe'),  # Create recipe page
     path('recipes/edit/<slug:slug>/', edit_recipe, name='edit_recipe'),
-    path('recipes/delete/<slug:slug>/', delete_recipe, name='delete_recipe')
+    path('recipes/delete/<slug:slug>/', views.delete_recipe, name='delete_recipe')
     ]
