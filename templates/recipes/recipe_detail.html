@@ -47,11 +47,20 @@
     {% endif %}
 
     <h3>Rate this Recipe</h3>
-    <form method="post">
-        {% csrf_token %}
-        {{ rating_form.as_p }}
-        <button type="submit" class="btn btn-primary">Submit Rating</button>
-    </form>
+    {% if user.is_authenticated %}
+        <form method="post">
+            {% csrf_token %}
+            {{ rating_form.as_p }}
+            <button type="submit" class="btn btn-primary">Submit Rating</button>
+        </form>
+        {% if existing_rating %}
+            <p>Your current rating: {{ existing_rating.score }}</p>
+        {% else %}
+            <p>You have not rated this recipe yet.</p>
+        {% endif %}
+    {% else %}
+        <p>You need to be logged in to rate this recipe.</p>
+    {% endif %}
 
     <!-- Social Share Buttons -->
     <div class="social-share mt-4">
@@ -93,7 +102,6 @@
     <div class="mt-4"></div>
     <a href="{% url 'edit_recipe' recipe.slug %}" class="btn btn-warning">Edit</a>
     <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
-</div>
 {% endif %}
 </div>
 

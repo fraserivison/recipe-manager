@@ -25,26 +25,34 @@ def recipe_list(request):
 def recipe_detail(request, slug):
     recipe = get_object_or_404(Recipe, slug=slug)
 
-    existing_rating = recipe.ratings.filter(user=request.user).first()
+    existing_rating = None
+    if request.user.is_authenticated:
+        existing_rating = recipe.ratings.filter(user=request.user).first()
 
     if request.method == 'POST':
-        rating_form = RatingForm(request.POST)
-        if rating_form.is_valid():
-            if existing_rating:
+        if request.user.is_authenticated:
+            rating_form = RatingForm(request.POST)
+            if rating_form.is_valid():
+                if existing_rating:
                 # Update the existing rating
-                existing_rating.score = rating_form.cleaned_data['score']
-                existing_rating.save()
-                messages.success(request, 'Your rating has been updated!')
-        else:        
-            rating = rating_form.save(commit=False)
-            rating.recipe = recipe
-            rating.user = request.user
-            rating.save()
-            messages.success(request, 'Your rating has been submitted!')
+                    existing_rating.score = rating_form.cleaned_data['score']
+                    existing_rating.save()
+                    messages.success(request, 'Your rating has been updated!')
+                else:        
+                    rating = rating_form.save(commit=False)
+                    rating.recipe = recipe
+                    rating.user = request.user
+                    rating.save()
+                    messages.success(request, 'Your rating has been submitted!')
 
-        recipe.update_average_rating()
-        return redirect('recipe_detail', slug=slug)
-   
+                recipe.update_average_rating()
+                return redirect('recipe_detail', slug=slug)
+            else:
+                messages.error(request, 'Please correct the errors below.')
+        else:
+            messages.error(request, 'You need to be logged in to rate this recipe.')
+
+
     else:
         rating_form = RatingForm()
 
