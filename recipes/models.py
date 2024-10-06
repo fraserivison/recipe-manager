@@ -5,7 +5,7 @@ from django.utils.text import slugify
 
 # Create your models here.
 class Recipe(models.Model):
-    title = models.CharField(max_length=35, unique=True)
+    title = models.CharField(max_length=35)
     slug = models.SlugField(max_length=45, unique=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="user_recipes")
     featured_image = CloudinaryField('image')

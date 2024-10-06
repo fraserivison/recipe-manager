@@ -68,7 +68,7 @@ def recipe_detail(request, slug):
         'existing_rating': existing_rating,
     })    
 
-# Create recipe view
+# Create a recipe
 @login_required
 def create_recipe(request):
     if request.method == 'POST':
@@ -76,7 +76,7 @@ def create_recipe(request):
         if form.is_valid():
             recipe = form.save(commit=False)
             recipe.author = request.user
-
+            
             unique_slug = slugify(recipe.title)
             while Recipe.objects.filter(slug=unique_slug).exists():
                 unique_slug = f"{slugify(recipe.title)}-{uuid.uuid4().hex[:6]}"
@@ -89,6 +89,7 @@ def create_recipe(request):
         form = RecipeForm()
     
     return render(request, 'recipes/create_recipe.html', {'form': form})
+
 
 # Recipe edit view
 @login_required
