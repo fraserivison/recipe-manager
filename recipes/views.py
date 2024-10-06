@@ -14,12 +14,18 @@ def index(request):
 
 # Recipes list view (renders the recipes.html template)
 def recipe_list(request):
-    recipes = Recipe.objects.all()
+    search_query = request.GET.get('search', '')
+    
+    if search_query:
+        recipes = Recipe.objects.filter(title__icontains=search_query)
+    else:
+        recipes = Recipe.objects.all()
+
     paginator = Paginator(recipes, 9)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
 
-    return render(request, 'recipes.html', {'page_obj': page_obj})
+    return render(request, 'recipes.html', {'page_obj': page_obj, 'search_query': search_query})
 
 # Recipe detail view
 def recipe_detail(request, slug):

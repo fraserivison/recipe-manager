@@ -8,6 +8,14 @@
 <div class="container mt-5">
     <h1 class="text-center">Recipes</h1>
 
+    <!-- Search Bar -->
+    <form method="GET" action="{% url 'recipe_list' %}" class="mb-4">
+        <div class="input-group">
+            <input type="text" name="search" class="form-control" placeholder="Search for a recipe..." value="{{ search_query }}">
+            <button class="btn btn-outline-secondary" type="submit">Search</button>
+        </div>
+    </form>
+
      <!-- Confirmation message -->
      {% if messages %}
      <div class="alert alert-success" role="alert">

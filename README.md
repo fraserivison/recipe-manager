@@ -137,6 +137,11 @@ Sizzle includes the following key features:
 - **Favourite Recipes**: Mark recipes as favourites for quick access.
 - **User Authentication**: Secure registration, login, and logout.
 
+### Features To Be Implemented
+- Filter recipes
+
+
+
 ---
 
 ## Data Schema / ERD
