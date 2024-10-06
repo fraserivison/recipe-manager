@@ -15,15 +15,16 @@
     - [Tasks](#tasks)
     - [Acceptance Criteria](#acceptance-criteria)
 4. [Features](#features)
-5. [Database Schema](#database-schema)
-6. [Testing](#testing)
+5. [Project Iteration Focus](#project-iteration-focus)
+6. [Database Schema](#database-schema)
+7. [Testing](#testing)
     - [Automated Testing](#automated-testing)
     - [Manual Testing](#manual-testing)
     - [Bug Fixes](#bug-fixes)
-7. [Deployment](#deployment)
-8. [Project Setup](#project-setup)
-9. [Version Control](#version-control)
-10. [Credits](#credits)
+8. [Deployment](#deployment)
+9. [Project Setup](#project-setup)
+10. [Version Control](#version-control)
+11. [Credits](#credits)
 
 ---
 
@@ -139,10 +140,28 @@ Sizzle includes the following key features:
 
 ### Features To Be Implemented
 - Filter recipes by category
-
-
+- Favourite recipes
+- User Home Page
 
 ---
+
+## Project Iteration Focus
+
+### Removal of Category Field
+
+In this iteration of Sizzle, the **category** field was removed from the recipe model and forms. This decision was made to streamline the project's current scope and focus on delivering core functionalities that enhance user experience without adding unnecessary complexity.
+
+### Rationale for Removal
+
+1. **Simplicity**: Removing the category field allows for a simpler user interface and reduces the cognitive load on users when browsing recipes. By focusing on essential features, users can navigate the application more easily and efficiently.
+
+2. **Core Functionalities**: This iteration prioritises the implementation of crucial functionalities, including:
+   - User registration and authentication
+   - Recipe creation, reading, updating, and deletion (CRUD operations)
+   - Search functionality to quickly find recipes based on titles and descriptions
+
+3. **Future Enhancements**: While the category feature is not included in this iteration, it remains a potential enhancement for future versions of the project. This decision allows for the opportunity to revisit the category feature later, ensuring that it can be thoughtfully integrated when the project is further developed.
+
 
 ## Data Schema / ERD
 

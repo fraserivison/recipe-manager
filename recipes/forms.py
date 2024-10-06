@@ -1,32 +1,6 @@
 from django import forms
 from .models import Recipe, Rating
 
-# CATEGORY_CHOICES = [
-   # ('', 'Select a category'),
-   # ('Appetiser', 'Appetiser'),
-   # ('Main Course', 'Main Course'),
-   # ('Dessert', 'Dessert'),
-   # ('Soup', 'Soup'),
-   # ('Salad', 'Salad'),
-   # ('Snack', 'Snack'),
-   # ('Breakfast', 'Breakfast'),
-   # ('Brunch', 'Brunch'),
-   # ('Baking', 'Baking'),
-   # ('Beverage', 'Beverage'),
-   # ('Side Dish', 'Side Dish'),
-   # ('Vegetarian', 'Vegetarian'),
-   # ('Vegan', 'Vegan'),
-   # ('Gluten-Free', 'Gluten-Free'),
-   # ('Pasta', 'Pasta'),
-   # ('Rice', 'Rice'),
-   # ('Grilled', 'Grilled'),
-   # ('Tray Bake', 'Tray Bake'),
-   # ('Stir-Fry', 'Stir-Fry'),
-   # ('Slow Cooker', 'Slow Cooker'),
-   # ('Seafood', 'Seafood'),
-   # ('Ethnic Cuisine', 'Ethnic Cuisine'),
-#]
-
 class RecipeForm(forms.ModelForm):
     title = forms.CharField(
         widget=forms.TextInput(attrs={'placeholder': 'Enter the name here...', 'class': 'form-control'})
@@ -52,10 +26,6 @@ class RecipeForm(forms.ModelForm):
     servings = forms.IntegerField(
         widget=forms.NumberInput(attrs={'placeholder': 'Enter a number', 'class': 'form-control'})
     )
-    # category = forms.ChoiceField(
-        # choices=CATEGORY_CHOICES,
-        # widget=forms.Select(attrs={'class': 'form-control'})
-    # )
 
     class Meta:
         model = Recipe
@@ -67,7 +37,6 @@ class RecipeForm(forms.ModelForm):
             'instructions',
             'cooking_time',
             'servings',
-            #'category'
             ]
 
     def clean_description(self):
