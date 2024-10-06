@@ -238,6 +238,14 @@ Automated testing is an essential part of the development process in this Recipe
    - **Access Control Test for Create Recipe:**
      - This test ensures that only authenticated users can access the recipe creation page, reinforcing security in the application.
 
+## 5. Error Handling Tests:
+- **Form Error Handling Tests:**
+  - This test checks that the appropriate error messages are returned for missing required fields in the recipe form, ensuring robust validation and user feedback.
+
+## 6. Edge Cases for Views:
+- **Recipe Editing and Deleting Tests:**
+  - These tests confirm that users can successfully edit existing recipes and delete them when required. They also check for the appropriate redirection and error handling in these processes.
+
 #### Changes Made
 
 - **Mocking Cloudinary Uploads:** 

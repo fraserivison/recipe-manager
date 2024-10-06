@@ -125,29 +125,39 @@ class RecipeFormErrorTests(TestCase):
         form_data = {
             'title': '',  # Missing title
             'description': 'Test Description',
+            'ingredients': 'Test Ingredients',
+            'instructions': 'Test Instructions',
             'cooking_time': 30,
             'servings': 4,
+            'featured_image': None,
         }
         form = RecipeForm(data=form_data)
         self.assertFalse(form.is_valid())
-        self.assertIn('title', form.errors)  # Check if error message for title is present
-        self.assertIn('instructions', form.errors)  # Check if error message for missing instructions
+        self.assertIn('title', form.errors)
+        self.assertIn('featured_image', form.errors)
+        self.assertIn('instructions', form.errors)
 
 # Edge Cases for Views
 class RecipeEdgeCaseTests(TestCase):
     def test_form_missing_required_fields(self):
         form_data = {
-            'title': 'Unique Recipe',
+            'title': '',
             'description': 'Duplicate Description',
             'ingredients': 'Test Ingredients',
-            'instructions': 'Test Instructions',
+            'instructions': '',
             'cooking_time': 30,
             'servings': 4,
+            'featured_image': None,
         }
         form = RecipeForm(data=form_data)
         self.assertFalse(form.is_valid())
+
         self.assertIn('title', form.errors)
         self.assertIn('instructions', form.errors)
+        
+        if 'featured_image' in form.errors:
+            self.assertIn('featured_image', form.errors)
+
 
 # Edge Cases for Views
 class RecipeEdgeCaseTests(TestCase):
@@ -166,13 +176,17 @@ class RecipeEditTests(TestCase):
         recipe = Recipe.objects.create(
             title='Recipe to Edit',
             author=self.user,
+            featured_image='http://example.com/fake-image.jpg',  # Include a fake image for testing
             description='Test Description',
+            ingredients='Initial ingredients',
+            instructions='Initial instructions',
             cooking_time=20,
             servings=2,
         )
 
         edit_data = {
             'title': 'Edited Recipe Title',
+            'featured_image': 'http://example.com/fake-image.jpg',  # Keep it the same for the test
             'description': 'Updated Description',
             'ingredients': 'Updated ingredients',
             'instructions': 'Updated instructions',
@@ -180,7 +194,7 @@ class RecipeEditTests(TestCase):
             'servings': 5,
         }
         response = self.client.post(reverse('edit_recipe', kwargs={'slug': recipe.slug}), data=edit_data)
-        self.assertEqual(response.status_code, 302)  # Redirects after successful edit
+        self.assertEqual(response.status_code, 302)
         
         updated_recipe = Recipe.objects.get(id=recipe.id)
         self.assertEqual(updated_recipe.title, 'Edited Recipe Title')
@@ -195,7 +209,10 @@ class RecipeEditTests(TestCase):
         recipe = Recipe.objects.create(
             title='Recipe to Edit',
             author=self.user,
+            featured_image='http://example.com/fake-image.jpg',  # Include a fake image for testing
             description='Test Description',
+            ingredients='Initial ingredients',
+            instructions='Initial instructions',
             cooking_time=20,
             servings=2,
         )
@@ -210,13 +227,13 @@ class RecipeEditTests(TestCase):
         }
 
         response = self.client.post(reverse('edit_recipe', kwargs={'slug': recipe.slug}), data=invalid_data)
-        self.assertEqual(response.status_code, 200)  # Should stay on the same page if the form is invalid
+        self.assertEqual(response.status_code, 200)
         self.assertFormError(response, 'form', 'title', 'This field is required.')
 
     @patch('cloudinary.CloudinaryResource.url', return_value='mocked_url')
     def test_edit_non_existent_recipe(self, mock_url):
         response = self.client.post(reverse('edit_recipe', kwargs={'slug': 'non-existent-slug'}), data={})
-        self.assertEqual(response.status_code, 404)  # Should return 404 for non-existent slug
+        self.assertEqual(response.status_code, 404)
 
 # Testing Recipe Deletion
 class RecipeDeleteTests(TestCase):
@@ -228,7 +245,10 @@ class RecipeDeleteTests(TestCase):
         recipe = Recipe.objects.create(
             title='Recipe to Delete',
             author=self.user,
+            featured_image='http://example.com/fake-image.jpg',
             description='Test Description',
+            ingredients='Initial ingredients',
+            instructions='Initial instructions',
             cooking_time=20,
             servings=2,
         )

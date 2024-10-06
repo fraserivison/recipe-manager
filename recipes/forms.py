@@ -6,6 +6,7 @@ class RecipeForm(forms.ModelForm):
         widget=forms.TextInput(attrs={'placeholder': 'Enter the name here...', 'class': 'form-control'})
     )
     description = forms.CharField(
+        required=True,
         widget=forms.Textarea(attrs={
             'rows': 1,
             'style': 'resize: none;',
@@ -15,16 +16,28 @@ class RecipeForm(forms.ModelForm):
         })
     )
     ingredients = forms.CharField(
+        required=True,
         widget=forms.Textarea(attrs={'placeholder': 'List ingredients (one per line)', 'class': 'form-control'})
     )
+
     instructions = forms.CharField(
+        required=True,
         widget=forms.Textarea(attrs={'placeholder': 'Enter step-by-step instructions (one step per line)', 'class': 'form-control'})
     )
+
     cooking_time = forms.IntegerField(
+        required=True,
         widget=forms.NumberInput(attrs={'placeholder': 'Enter a number', 'class': 'form-control'})
     )
+
     servings = forms.IntegerField(
+        required=True,
         widget=forms.NumberInput(attrs={'placeholder': 'Enter a number', 'class': 'form-control'})
+    )
+
+    featured_image = forms.ImageField(
+        required=True,
+        widget=forms.ClearableFileInput(attrs={'class': 'form-control'})
     )
 
     class Meta:
@@ -37,13 +50,7 @@ class RecipeForm(forms.ModelForm):
             'instructions',
             'cooking_time',
             'servings',
-            ]
-
-    def clean_description(self):
-        description = self.cleaned_data.get('description')
-        if len(description) > 45:
-            raise forms.ValidationError('Description must be less than 45 characters long.')
-        return description
+        ]
 
 class RatingForm(forms.ModelForm):
     class Meta:
