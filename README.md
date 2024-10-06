@@ -138,7 +138,7 @@ Sizzle includes the following key features:
 - **User Authentication**: Secure registration, login, and logout.
 
 ### Features To Be Implemented
-- Filter recipes
+- Filter recipes by category
 
 
 

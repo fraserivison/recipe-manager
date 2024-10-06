@@ -14,7 +14,7 @@ class Recipe(models.Model):
     instructions = models.TextField()
     cooking_time = models.IntegerField()
     servings = models.IntegerField()
-    category = models.CharField(max_length=100, null=True, blank=True)
+    # category = models.CharField(max_length=100, null=True, blank=True)
     created_on = models.DateTimeField(auto_now_add=True)
     average_rating = models.FloatField(default=0)
 
