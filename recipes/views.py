@@ -145,3 +145,8 @@ class LogoutView(AllauthLogoutView):
 
     def get_success_url(self):
         return self.request.META.get('HTTP_REFERER', super().get_success_url())
+
+# Custom 404 view
+def custom_404_view(request, exception):
+    return render(request, '404.html', status=404)        
+

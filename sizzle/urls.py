@@ -17,6 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.views.generic import RedirectView
+from recipes.views import custom_404_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -25,3 +26,4 @@ urlpatterns = [
     path('summernote/', include('django_summernote.urls')),
     ]
 
+handler404 = 'recipes.views.custom_404_view'
