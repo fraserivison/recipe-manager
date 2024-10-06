@@ -106,7 +106,6 @@ def edit_recipe(request, slug):
 def delete_recipe(request, slug):
     recipe = get_object_or_404(Recipe, slug=slug)
     if request.method == 'POST':
-        print("Delete function triggered")
         recipe.delete()
         messages.success(request, 'Recipe deleted successfully!')
         return redirect('recipe_list')
@@ -116,10 +115,33 @@ def delete_recipe(request, slug):
 class LoginView(AllauthLoginView):
     template_name = 'account/login.html'
 
+    def form_valid(self, form):
+        response = super().form_valid(form)
+        messages.success(self.request, 'You have logged in successfully.')
+        return response
+
+        def get_success_url(self):
+            return self.request.META.get('HTTP_REFERER', super().get_success_url())
+
 # Custom signup view using allauth
 class SignupView(AllauthSignupView):
     template_name = 'account/signup.html'
 
+    def form_valid(self, form):
+        response = super().form_valid(form)
+        messages.success(self.request, 'You have signed up successfully.')
+        return response
+
+        def get_success_url(self):
+            return self.request.META.get('HTTP_REFERER', super().get_success_url())
+
 # Custom logout view using allauth
 class LogoutView(AllauthLogoutView):
     template_name = 'account/logout.html'
+
+    def dispatch(self, request, *args, **kwargs):
+        messages.success(request, 'You have signed out.')
+        return super().dispatch(request, *args, **kwargs)
+
+        def get_success_url(self):
+            return self.request.META.get('HTTP_REFERER', super().get_success_url())
