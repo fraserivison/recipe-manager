@@ -120,8 +120,8 @@ class LoginView(AllauthLoginView):
         messages.success(self.request, 'You have logged in successfully.')
         return response
 
-        def get_success_url(self):
-            return self.request.META.get('HTTP_REFERER', super().get_success_url())
+    def get_success_url(self):
+        return self.request.META.get('HTTP_REFERER', super().get_success_url())
 
 # Custom signup view using allauth
 class SignupView(AllauthSignupView):
@@ -132,8 +132,8 @@ class SignupView(AllauthSignupView):
         messages.success(self.request, 'You have signed up successfully.')
         return response
 
-        def get_success_url(self):
-            return self.request.META.get('HTTP_REFERER', super().get_success_url())
+    def get_success_url(self):
+        return self.request.META.get('HTTP_REFERER', super().get_success_url())
 
 # Custom logout view using allauth
 class LogoutView(AllauthLogoutView):
@@ -143,5 +143,5 @@ class LogoutView(AllauthLogoutView):
         messages.success(request, 'You have signed out.')
         return super().dispatch(request, *args, **kwargs)
 
-        def get_success_url(self):
-            return self.request.META.get('HTTP_REFERER', super().get_success_url())
+    def get_success_url(self):
+        return self.request.META.get('HTTP_REFERER', super().get_success_url())
