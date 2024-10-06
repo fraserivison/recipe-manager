@@ -49,8 +49,15 @@
         </nav>
     </header>
 
+    <!-- Hero Section -->
+    <div class="container-fluid text-center bg-light py-5">
+        <h1 class="display-4">Sizzle</h1>
+        <p class="lead">Your go-to recipe manager for all things delicious!</p>
+        <img src="{% static 'images/hero-image.jpg' %}" alt="Delicious Recipes" class="img-fluid rounded">
+    </div>
+
       <!-- Message display logic -->
-      <div class="container mt-3">
+    <div class="container mt-3">
         {% if messages %}
             <div class="alert alert-info">
                 <ul class="list-unstyled">
@@ -70,22 +77,6 @@
     </footer>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <!---
-    <script>
-        $(document).ready(function() {
-            // Debugging to see if modal opens
-            $('#deleteModal').on('shown.bs.modal', function () {
-                console.log('Modal shown');
-            });
-    
-            // Debugging form submission
-            $('#deleteForm').on('submit', function(e) {
-                console.log('Form submitted');
-            });
-        });
-    </script>
-    -->
-    
 </body>
 
 </html>
