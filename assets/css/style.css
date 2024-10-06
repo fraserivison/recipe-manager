@@ -27,8 +27,37 @@
     text-align: center;
 }
 
+/* What you can do section */
+.custom-card {
+    height: 160px; /* Set a fixed height for the cards */
+    background-color: #f8f9fa; /* Light background color for cards */
+    transition: transform 0.2s; /* Smooth transition for hover effect */
+}
+
+.custom-card:hover {
+    transform: scale(1.05); /* Slightly enlarge card on hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Darker shadow on hover */
+}
+
+.card-title {
+    font-size: 1.5rem; /* Adjust font size for the title */
+    font-weight: bold; /* Bold title for emphasis */
+    text-align: left;
+}
+
+.card-text {
+    font-size: 1rem; /* Font size for card text */
+    text-align: left;
+}
+
+
+/* Card image styling */
 .card-img-top {
     width: 100%;
     height: 200px;
     object-fit: cover;
+}
+
+.text-justify {
+    text-align: justify;
 }
