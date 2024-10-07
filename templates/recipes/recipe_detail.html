@@ -7,9 +7,17 @@
 {% block content %}
 <div class="container mt-5">
 
-    <h1 class="text-center">{{ recipe.title }}</h1>
+    <!-- <h1 class="text-center">{{ recipe.title }}</h1> -->
+
     {% if recipe.featured_image %}
-    <img src="{{ recipe.featured_image.url }}" alt="{{ recipe.title }}" class="img-fluid mb-4">
+    <div class="hero-container mb-4">
+        <img src="{{ recipe.featured_image.url }}" alt="{{ recipe.title }}" class="hero-image">
+        <div class="hero-overlay">
+            <div class="hero-text">
+                <h2>{{ recipe.title }}</h2>
+            </div>
+        </div>
+    </div>
     {% endif %}
 
     <div class="recipe-details mt-4">
@@ -65,50 +73,48 @@
         {% endif %}
     </div>
     
-    
-
-<!-- Social Share Buttons -->
-<div class="social-share mt-4">
-    <h3>Share this recipe:</h3>
-    <div class="btn-group" role="group" aria-label="Social Media Share Buttons">
-        <a href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}" target="_blank"
-            class="btn btn-outline-primary">Share on Facebook</a>
-        <a href="https://twitter.com/intent/tweet?text={{ recipe.title }}&url={{ request.build_absolute_uri }}"
-            target="_blank" class="btn btn-outline-info">Share on Twitter</a>
-        <a href="https://api.whatsapp.com/send?text={{ recipe.title }} {{ request.build_absolute_uri }}" target="_blank"
-            class="btn btn-outline-success">Share on WhatsApp</a>
-        <button class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#instagramModal">Share on
-            Instagram</button>
+    <!-- Social Share Buttons -->
+    <div class="social-share mt-4">
+        <h3>Share this recipe:</h3>
+        <div class="btn-group" role="group" aria-label="Social Media Share Buttons">
+            <a href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}" target="_blank"
+                class="btn btn-outline-primary">Share on Facebook</a>
+            <a href="https://twitter.com/intent/tweet?text={{ recipe.title }}&url={{ request.build_absolute_uri }}"
+                target="_blank" class="btn btn-outline-info">Share on Twitter</a>
+            <a href="https://api.whatsapp.com/send?text={{ recipe.title }} {{ request.build_absolute_uri }}" target="_blank"
+                class="btn btn-outline-success">Share on WhatsApp</a>
+            <button class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#instagramModal">Share on
+                Instagram</button>
+        </div>
     </div>
-</div>
 
-<!-- Instagram Share Modal -->
-<div class="modal fade" id="instagramModal" tabindex="-1" aria-labelledby="instagramModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="instagramModalLabel">Share on Instagram</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <p>To share this recipe on Instagram, copy the link below:</p>
-                <input type="text" id="recipeLink" class="form-control" value="{{ request.build_absolute_uri }}"
-                    readonly>
-                <p class="mt-2">Then, paste it into your Instagram story or post!</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+    <!-- Instagram Share Modal -->
+    <div class="modal fade" id="instagramModal" tabindex="-1" aria-labelledby="instagramModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="instagramModalLabel">Share on Instagram</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>To share this recipe on Instagram, copy the link below:</p>
+                    <input type="text" id="recipeLink" class="form-control" value="{{ request.build_absolute_uri }}"
+                        readonly>
+                    <p class="mt-2">Then, paste it into your Instagram story or post!</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
-{% if user.is_authenticated and recipe.author == user %}
-<div class="mt-4">
-    <a href="{% url 'edit_recipe' recipe.slug %}" class="btn btn-warning">Edit</a>
-    <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
-</div>
-{% endif %}
+    {% if user.is_authenticated and recipe.author == user %}
+    <div class="mt-4">
+        <a href="{% url 'edit_recipe' recipe.slug %}" class="btn btn-warning">Edit</a>
+        <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
+    </div>
+    {% endif %}
 </div>
 
 <!-- Delete Confirmation Modal -->
@@ -133,3 +139,4 @@
     </div>
 </div>
 {% endblock %}
+
