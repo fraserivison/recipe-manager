@@ -73,8 +73,28 @@
     transition: all 0.3s ease-in-out;
 }
 
-.btn-custom:hover {
+.btn-custom:hover,.info-circle:hover {
     background: linear-gradient(135deg, #feb47b, #ff7e5f);
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
     transform: translateY(-3px);
+}
+
+.info-circle {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #ff7e5f, #feb47b);
+    padding: 20px;
+    text-align: center;
+}
+
+.info-circle h4 {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    color: white;
+}
+
+.info-circle p {
+    margin-bottom: 0;
+    color: white;
 }
