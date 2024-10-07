@@ -163,11 +163,11 @@ In this iteration of Sizzle, the **category** field was removed from the recipe 
 3. **Future Enhancements**: While the category feature is not included in this iteration, it remains a potential enhancement for future versions of the project. This decision allows for the opportunity to revisit the category feature later, ensuring that it can be thoughtfully integrated when the project is further developed.
 
 
-## Data Schema / ERD
+## Database Schema
 
 The following Entity Relationship Diagram (ERD) illustrates the data model for the Sizzle application, showcasing the relationships between different entities.
 
-<img src="assets/erd.png" alt="ERD Diagram" width="350px">
+<img src="assets/images/erd.png" alt="ERD Diagram" width="350px">
 <p>Entity Relationship Diagram (ERD).</p>
 
 ### Description of Entities

@@ -1,5 +1,80 @@
+.hero-container {
+    position: relative;
+    height: 60vh;
+    overflow: hidden;
+}
+
+.hero-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.hero-text {
+    text-align: center;
+}
+
+/* What you can do section */
+.custom-card {
+    height: 160px;
+    background-color: #f8f9fa;
+    transition: transform 0.2s;
+}
+
+.custom-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.card-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: left;
+}
+
+.card-text {
+    font-size: 1rem;
+    text-align: left;
+}
+
+
+/* Card image styling */
 .card-img-top {
     width: 100%;
     height: 200px;
     object-fit: cover;
+}
+
+.text-justify {
+    text-align: justify;
+}
+
+.btn-custom {
+    background: linear-gradient(135deg, #ff7e5f, #feb47b);
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 50px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
+}
+
+.btn-custom:hover {
+    background: linear-gradient(135deg, #feb47b, #ff7e5f);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    transform: translateY(-3px);
 }

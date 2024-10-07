@@ -15,7 +15,7 @@ class RecipeFormTests(TestCase):
             'instructions': 'Test instructions',
             'cooking_time': 30,  # Valid cooking time
             'servings': 4,
-            'featured_image': 'assets/erd.png',
+            'featured_image': 'assets/images/erd.png',
         }
         form = RecipeForm(data=form_data)
 
