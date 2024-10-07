@@ -78,3 +78,41 @@
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
     transform: translateY(-3px);
 }
+
+/* Custom styles for the recipe detail page */
+.recipe-detail {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.recipe-title {
+    color: #2c3e50;
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+.recipe-section-title {
+    color: #2980b9;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+.recipe-description, .recipe-ingredients, .recipe-instructions {
+    font-size: 1.1em;
+    line-height: 1.6;
+}
+
+.recipe-image img {
+    border-radius: 8px;
+}
+
+.recipe-rating {
+    font-weight: bold;
+    color: #e67e22;
+}
+
+.recipe-rating-form .form-control {
+    width: 50%;
+    margin: 0 auto;
+}
