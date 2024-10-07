@@ -22,7 +22,7 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav">
+                    <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'index' %}">Home</a>
                         </li>
@@ -31,8 +31,7 @@
                         </li>
                         {% if user.is_authenticated %}
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url 'create_recipe' %}" class="btn btn-primary">Create a New
-                                Recipe</a>
+                            <a class="nav-link" href="{% url 'create_recipe' %}">Create</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'account_logout' %}">Log Out</a>
@@ -49,7 +48,7 @@
                 </div>
             </div>
         </nav>
-    </header>
+    </header>    
 
       <!-- Message display logic -->
     <div class="container mt-3">

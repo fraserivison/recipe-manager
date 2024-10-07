@@ -6,10 +6,24 @@ body, p {
     font-family: 'Montserrat', sans-serif;
 }
 
+/* Specific Styling for the navbar brand */
+.navbar-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    font-weight: bold;
+    color: #ff7e5f;
+    text-decoration: none; 
+}
+
+.navbar-brand:hover {
+    color: #feb47b;
+}
+
 .hero-container {
     position: relative;
     height: 60vh;
     overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
 }
 
 .hero-image {
