@@ -58,26 +58,32 @@
     </div>
 
     <div class="recipe-details my-4">
-        <h3>Ingredients:</h3>
+        <h3 class="my-2">Ingredients:</h3>
         <ul class="list-group my-3">
             {% for ingredient in recipe.ingredients.splitlines %}
             <li class="list-group-item">{{ ingredient }}</li>
             {% endfor %}
         </ul>
 
-        <h3>Instructions:</h3>
+        <h3 class="my-2">Instructions:</h3>
         <ol class="list-group my-3">
             {% for instruction in recipe.instructions.splitlines %}
             <li class="list-group-item">{{ instruction }}</li>
             {% endfor %}
         </ol>
 
-
+        {% if user.is_authenticated %}
         <div class="rating-section my-4">
-            <h3>Rate this Recipe:</h3>
+            <h3 class="my-2">Rate this Recipe:</h3>
             {% if user.is_authenticated %}
             <form method="post" class="my-4">
                 {% csrf_token %}
+                {% if existing_rating %}
+            <p class="my-3">Your current rating: {{ existing_rating.score }}</p>
+            {% endif %}
+            {% else %}
+            <p class="my-3">You need to be logged in to rate this recipe.</p>
+            {% endif %}
                 <div class="form-group my-3">
                     <!-- <label for="{{ rating_form.score.id_for_label }}">Rate this recipe:</label> -->
                     {{ rating_form.score }}
@@ -87,17 +93,13 @@
                     </div>
                     {% endif %}
                 </div>
+
                 <div class="text-center my-4">
                     <button type="submit" class="btn btn-custom">Submit Rating</button>
                 </div>
             </form>
-            {% if existing_rating %}
-            <p class="text-center my-3">Your current rating: {{ existing_rating.score }}</p>
-            {% endif %}
-            {% else %}
-            <p class="text-center my-3">You need to be logged in to rate this recipe.</p>
-            {% endif %}
         </div>
+        {% endif %}
 
         <!-- Social Share Buttons -->
         <div class="social-share mt-4">
