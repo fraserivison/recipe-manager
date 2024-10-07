@@ -27,6 +27,10 @@
     text-align: center;
 }
 
+.navbar-nav .nav-item {
+    margin-left: 20px; /* Adjust the spacing as needed */
+}
+
 /* What you can do section */
 .custom-card {
     height: 160px;
