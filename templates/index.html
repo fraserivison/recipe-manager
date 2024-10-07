@@ -13,6 +13,9 @@
         <div class="hero-text">
             <h1 class="display-4">Sizzle</h1>
             <p class="lead">Your one-stop solution to discover and share the tastiest recipes.</p>
+            <div class="container-fluid text-center">
+                <a href="{% url 'recipe_list' %}" class="btn btn-custom btn-lg">Browse All Recipes</a>
+            </div>
         </div>
     </div>
 </div>
@@ -84,7 +87,7 @@
 </div>
 <div class="container mt-5">
     <h2 class="text-center mb-4">Why Cooking Matters</h2>
-    <p class="mb-5 text-justify">Cooking is more than just preparing food; it’s a powerful expression of love,
+    <p class="mb-5 text-justify">Cooking is more than just preparing food; it is a powerful expression of love,
         creativity, and culture. It nurtures relationships, brings families together, and promotes healthier living
         through mindful ingredient choices. Cooking also fosters culinary creativity and allows individuals to explore
         diverse cuisines, preserving family traditions along the way. Moreover, it enhances practical skills, provides
@@ -160,9 +163,5 @@
             </div>
         </div>
     </div>
-</div>
-</div>
-<div class="container-fluid text-center bg-light py-5">
-    <a href="{% url 'recipe_list' %}" class="btn btn-custom btn-lg">Browse All Recipes</a>
 </div>
 {% endblock %}
