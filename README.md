@@ -45,6 +45,19 @@ The main goals of this project are:
 **Purpose**:  
 Sizzle provides a platform where users can manage their recipes in an intuitive and easy-to-navigate interface, with full control over the CRUD functionalities of the recipes.
 
+**Sizzle** is designed to be a comprehensive recipe management platform that empowers users to discover, create, and organise their culinary creations. The platform offers an intuitive and user-friendly interface, making it easy for both novice and experienced cooks to manage their recipes effortlessly. 
+
+With **Sizzle**, users can:
+
+- **Create Recipes**: Users can easily input their favourite recipes, including ingredients, preparation steps, and even images, allowing them to keep all their cooking inspirations in one place.
+- **Read and Edit Recipes**: The application provides the functionality to view and edit existing recipes, ensuring that users can update their creations with new tips or ingredients.
+- **Delete Recipes**: Users have full control over their recipe collection, enabling them to delete recipes they no longer want to keep, thereby maintaining a clean and organised space.
+- **Intuitive Navigation**: The interface is designed for easy navigation, allowing users to quickly find recipes through a search function.
+- **User Management**: The platform includes user authentication, allowing users to create accounts, log in, create, update and rate recipes securely.
+- **Responsive Design**: Built with Bootstrap, **Sizzle** ensures a seamless experience across various devices, whether on a desktop, tablet, or mobile phone.
+
+Ultimately, **Sizzle** aims to be the go-to solution for food enthusiasts looking to streamline their cooking process, explore new recipes, and share their culinary journey with others.
+
 ---
 
 ## User Experience (UX)
@@ -60,13 +73,21 @@ The scope focuses on core functionalities such as:
 - User feedback through form validations and process confirmations.
 
 ### Structure
-The structure follows a clear and intuitive navigation system, allowing users to easily find the functionality they need.
 
-### Skeleton
-Wireframes were used during the design phase to ensure the layout is clear and responsive.
+The structure of **Sizzle** follows a clear and intuitive navigation system, which has been meticulously designed to enhance user experience. The main navigation bar is prominently displayed at the top of the interface, allowing users to access key functionalities with ease. 
+
+- **Logical Layout**: Each section of the application is organised in a logical manner, enabling users to seamlessly transition between creating, viewing, editing, and deleting recipes without confusion.
+- **Search Functionality**: A search feature is integrated, allowing users to quickly locate specific recipes or ingredients, thereby saving time and enhancing usability.
+- **User-Friendly Website**: The layout has been strategically placed to provide visual cues, improving accessibility and making navigation more intuitive for users of all ages and technical abilities.
 
 ### Surface
-The visual design follows modern design principles, utilising Bootstrap to ensure responsiveness and accessibility. The colour scheme and typography were chosen to reflect a clean and minimalistic approach.
+
+The surface design of **Sizzle** adheres to modern design principles, effectively utilising Bootstrap to ensure both responsiveness and accessibility across various devices. 
+
+- **Responsive Design**: The layout automatically adjusts to fit different screen sizes, providing an optimal viewing experience whether accessed on a desktop, tablet, or mobile device. This ensures that users can manage their recipes on-the-go without compromising functionality.
+- **Clean and Minimalistic Aesthetic**: The chosen colour scheme features soft, neutral tones complemented by vibrant accents, reflecting a clean and minimalistic approach that is both aesthetically pleasing and easy on the eyes. This design choice helps to focus user attention on the content, rather than being distracted by overly complex visuals.
+- **Thoughtful Typography**: The typography is carefully selected to enhance readability and user engagement. A combination of modern serif and sans-serif fonts adds character to the interface while ensuring that text remains clear and legible.
+- **Visual Hierarchy**: Key elements such as headings, buttons, and links are designed to stand out, creating a clear visual hierarchy that guides users through their interactions with the application.
 
 ### User Experience Enhancements
 
@@ -111,37 +132,91 @@ The development process was guided by the following epics:
 3. Search and Filter Recipes.
 
 ### User Stories
-1. Add a recipe  
-   As a user, I want to be able to add a new recipe so that I can manage my favourite dishes.
-2. View all recipes  
-   As a user, I want to view all recipes, so I can browse and find new dishes to cook.
-3. Edit a recipe  
-   As a user, I want to edit an existing recipe, so I can update details like ingredients or instructions.
-4. Delete a recipe  
-   As a user, I want to delete a recipe that I no longer need.
-5. Search for a recipe  
-   As a user, I want to search for a recipe based on a keyword or ingredient.
+
+1. **Add a Recipe**  
+   As a user, I want to be able to add a new recipe so that I can manage my favourite dishes. This functionality allows users to input details such as the recipe name, ingredients, instructions, and images, ensuring they can easily keep track of their culinary creations.
+2. **View All Recipes**  
+   As a user, I want to view all recipes so I can browse and find new dishes to cook. This feature provides an overview of all available recipes in a visually appealing layout, making it easy for users to discover new meals.
+3. **Edit a Recipe**  
+   As a user, I want to edit an existing recipe so I can update details like ingredients or instructions. This capability enables users to refine their recipes based on feedback or personal preferences, ensuring their recipe collection remains relevant and accurate.
+4. **Delete a Recipe**  
+   As a user, I want to delete a recipe that I no longer need. This functionality allows users to maintain a clean and organised recipe collection, removing any unwanted or outdated recipes effortlessly.
+5. **Search for a Recipe**  
+   As a user, I want to search for a recipe based on a keyword or ingredient. This feature enhances user experience by providing a quick and efficient way to find specific recipes, tailored to their current cravings or available ingredients.
+6. **User Login**  
+   As a user, I want to log in to my account so I can access my saved recipes and personal preferences. This feature ensures that users can securely access their accounts and manage their recipes.
+7. **User Logout**  
+   As a user, I want to log out of my account when I finish using the application. This functionality provides users with the ability to securely exit their accounts, ensuring their data remains protected.
+8. **User Registration**  
+   As a new user, I want to register for an account so that I can start managing my recipes. This feature includes an easy sign-up process that captures necessary information, allowing new users to create an account quickly.
+9. **Pagination**  
+   As a user, I want to navigate through multiple pages of recipes to find new dishes without overwhelming the interface. This functionality allows for a smooth browsing experience, displaying a manageable number of recipes per page.
+10. **Recipe Rating**  
+   As a user, I want to rate recipes based on my experience, so I can provide feedback and help others choose the best dishes. This feature enables users to share their opinions, creating a community-driven rating system that enhances recipe discovery.
+11. **View Recipe Details**  
+   As a user, I want to view detailed information about a specific recipe so that I can understand its ingredients, preparation steps, and any additional notes. This feature allows users to click on a recipe to see comprehensive details, ensuring they have all the information needed to recreate the dish.   
 
 ### Tasks
-Tasks for each user story were broken down into manageable sections and completed iteratively. You can view the detailed breakdown of tasks on the GitHub project board.
+
+To ensure a systematic and efficient development process, tasks for each user story were meticulously broken down into smaller, manageable sections. This approach allowed for focused work on individual features while facilitating incremental progress. Each task was prioritised based on its importance to the user experience and was assigned to team members to maximise productivity. 
+
+The iterative nature of this development process enabled regular testing and feedback, allowing for adjustments to be made based on user needs and preferences. This continuous integration ensured that features were refined and improved upon before moving on to subsequent tasks. 
+
+You can view the detailed breakdown of tasks, including assigned responsibilities and completion status, on the [GitHub project board](https://github.com/users/fraserivison/projects/3). This transparency provides insight into the development process and helps track progress towards project completion.
 
 ### Acceptance Criteria
-Each user story includes specific acceptance criteria to ensure functionality works as expected. This includes feedback loops, data validation, and user notifications.
+
+Each user story is accompanied by specific acceptance criteria designed to ensure that functionality operates as intended and meets user expectations. These criteria serve as a benchmark for testing and validation, allowing developers to verify that the implemented features align with user requirements. 
+
+The acceptance criteria for each user story include:
+
+- **Feedback Loops**: Users receive immediate and clear feedback on their actions. For example, when a user adds or deletes a recipe, they are shown a confirmation message, ensuring they are aware of the success or failure of their actions.
+
+- **Data Validation**: Input fields are rigorously validated to ensure all necessary information is provided and correctly formatted. This prevents errors during recipe management, such as incomplete submissions or invalid data types, enhancing the overall robustness of the application.
+
+- **User Notifications**: Clear and concise notifications are displayed to users, informing them of the results of their actions. Whether it’s a successful login, an error message during registration, or confirmation of a recipe edit, these notifications guide users through their interactions with the application.
+
+These acceptance criteria not only enhance the functionality of **Sizzle** but also contribute to an intuitive and user-friendly experience, ensuring that users can manage their recipes effortlessly and with confidence.
+
 
 ---
 
 ## Features
 
-Sizzle includes the following key features:
-- **Recipe Management**: Add, edit, and delete recipes.
-- **Search Functionality**: Search for recipes based on keywords.
-- **Favourite Recipes**: Mark recipes as favourites for quick access.
-- **User Authentication**: Secure registration, login, and logout.
+## Features
+
+**Sizzle** includes the following key features:
+
+- **Recipe Management**: 
+  Users can effortlessly add new recipes, edit existing ones, and delete those they no longer wish to keep. This feature provides an intuitive interface for managing personal recipe collections, ensuring users can keep their culinary creations organised.
+  ![Recipe Management](insert-image-link-here)
+
+- **Search Functionality**: 
+  The platform allows users to search for recipes based on keywords, making it easy to find specific dishes or ingredients. This feature enhances user experience by enabling quick access to desired recipes without scrolling through the entire list.
+  ![Search Functionality](insert-image-link-here)
+
+- **Favourite Recipes**: 
+  Users can mark their favourite recipes for quick and easy access. This feature is particularly useful for those who often revisit certain dishes and want to streamline their cooking experience.
+  ![Favourite Recipes](insert-image-link-here)
+
+- **User Authentication**: 
+  The application offers secure registration, login, and logout functionalities. User authentication ensures that each individual's recipe collection remains private and secure, while also providing a personalised experience.
+  ![User Authentication](insert-image-link-here)
 
 ### Features To Be Implemented
-- Filter recipes by category
-- Favourite recipes
-- User Home Page
+
+- **Filter Recipes by Category**: 
+  This upcoming feature will allow users to filter recipes based on categories such as cuisine type, dietary preferences, or meal types. This functionality aims to enhance usability by enabling users to discover recipes that best fit their specific needs and occasions.
+  ![Filter Recipes by Category](insert-image-link-here)
+
+- **User Home Page**: 
+  The implementation of a dedicated user home page will offer a personalised space for users to view their favourite recipes, recently added dishes, and suggested recipes based on their cooking history. This feature aims to enhance user engagement and streamline access to frequently used functionalities.
+  ![User Home Page](insert-image-link-here)
+
+- **Recipe Rating**: 
+  A rating system will be introduced, allowing users to rate recipes based on their experience. This feature will help others gauge the popularity and quality of recipes, promoting community engagement and interaction.
+  ![Recipe Rating](insert-image-link-here)
+
 
 ---
 
