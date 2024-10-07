@@ -278,7 +278,6 @@ Automated testing is an essential part of the development process in this Recipe
        - Cooking Time
        - Servings
        - Category
-       - Status
      - The test ensures that the form is valid and that the cleaned data matches the expected values.
    - **Invalid Recipe Form Test:**
      - This test verifies the form's behaviour with invalid data, checking for:
@@ -370,28 +369,27 @@ Overall, all authentication features are functioning as expected.
 - **Logging In:** Users can log in with valid credentials and are redirected to the correct page after login.
 - **Logging Out:** Users can successfully log out, and the system redirects them to the homepage.
 
->>> TO DO NEXT
+### Search Functionality Testing
+The search functionality was rigorously tested to ensure a seamless user experience. The testing process included:
 
-#### Search Functionality Testing
-The search functionality was tested as follows:
+- **Search for Recipes:** Users can search for recipes by entering keywords into the search bar. The system is designed to accurately return a list of matching recipes based on the search input. During testing, various keywords were inputted, and the results were verified to ensure that all relevant recipes were displayed. This functionality was tested with different combinations of keywords, including partial matches and exact matches, confirming that the search algorithm performs as expected.
 
-- **Search for Recipes:** Users can search for recipes by keyword. The system correctly returns matching recipes based on the search input.
+### Favourite Recipes Testing
+The favourite recipes feature was tested thoroughly to validate its functionality and user experience:
 
-#### Favourite Recipes Testing
-The favourite recipes feature was tested:
+- **Adding to Favourites:** Users can easily add a recipe to their list of favourites by clicking the 'Add to Favourites' button on the recipe detail page. The system successfully updates the favourites section, displaying the newly added recipe. Testing included verifying that the correct recipe appears in the favourites list after addition, ensuring that the user experience is intuitive and responsive.
 
-- **Adding to Favourites:** Users can add a recipe to their list of favourites, and this is reflected in the favourites section.
-- **Removing from Favourites:** Users can remove recipes from their favourites, and the UI updates accordingly.
+- **Removing from Favourites:** Users have the option to remove recipes from their favourites. This action is performed by clicking the 'Remove from Favourites' button. Upon removal, the UI updates immediately to reflect the change, confirming that the recipe is no longer listed in the favourites section. This functionality was tested to ensure that it works seamlessly, maintaining data integrity and providing real-time feedback to users.
 
-#### Responsive Design Testing
-The site was tested across multiple devices and screen sizes to ensure responsiveness:
+### Responsive Design Testing
+The website's responsive design was evaluated across multiple devices and screen sizes to guarantee an optimal user experience:
 
-- **Mobile, Tablet, and Desktop Views:** The site layout adjusts correctly for mobile, tablet, and desktop devices, maintaining all functionality.
+- **Mobile, Tablet, and Desktop Views:** The site layout adjusts correctly for mobile phones, tablets, and desktop computers, ensuring that all content remains accessible and functional regardless of the device used. Testing involved accessing the site on various screen sizes and orientations, verifying that all elements, including images, text, and buttons, scale appropriately. This testing confirmed that the site maintains usability and aesthetic appeal across all devices.
 
-#### Navigation Testing
-The navigation bar was tested to ensure smooth user navigation:
+### Navigation Testing
+The navigation bar was thoroughly tested to ensure smooth user navigation throughout the site:
 
-- **Navigation Bar:** The navigation bar is functional on all pages, and users can access all areas of the site seamlessly.
+- **Navigation Bar:** The navigation bar was evaluated for functionality across all pages of the website. Users can access all areas of the site seamlessly through the navigation links. Testing included checking that all links direct users to the correct pages and that dropdown menus function as intended. The navigation bar's responsiveness was also assessed to ensure it remains user-friendly on different devices, providing an efficient way for users to explore the site’s content.
 
 ### Bug Fixes
 
@@ -466,10 +464,20 @@ Key files:
 
 
 - **Libraries and Frameworks**:  
-  - Django  
-  - PostgreSQL  
-  - Bootstrap  
-  - Cloudinary
+  The following libraries and frameworks were utilised to build this project:
+  - **Django**: A high-level Python web framework that encourages rapid development and clean, pragmatic design.
+  - **PostgreSQL**: An advanced, open-source relational database management system.
+  - **Bootstrap**: A popular front-end framework for developing responsive and mobile-first websites.
+  - **Cloudinary**: A cloud-based service for managing images and videos, providing efficient storage and delivery.
+
+- **Icons and Fonts**:  
+  - [FontAwesome](https://fontawesome.com) - Icon toolkit used for adding icons to the user interface.
+  - [Google Fonts](https://fonts.google.com) - Custom fonts were sourced from Google Fonts to enhance the typography of the website.
+
+- **Documentation and Resources**:  
+  - [Django Documentation](https://docs.djangoproject.com) - Official documentation for the Django framework, used as a reference throughout the project.
+  - [Bootstrap Documentation](https://getbootstrap.com/docs) - Official Bootstrap documentation for guidance on component usage and layout.
+
 
 - **Acknowledgements**:  
   Special thanks to the Full-Stack Development team and mentors for their guidance.
