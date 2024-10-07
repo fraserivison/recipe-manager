@@ -103,7 +103,7 @@ ROOT_URLCONF = 'sizzle.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'DIRS': [os.path.join(BASE_DIR, 'templates'), BASE_DIR],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -187,8 +187,10 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # Additional static files settings
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'assets'),
+    os.path.join(BASE_DIR, 'assets'),   
 ]
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
