@@ -16,22 +16,23 @@
         </div>
     </form>
 
-    <div class="row">
-        {% for recipe in page_obj %}
-        <div class="col-md-4">
-            <div class="card mb-4">
-                <img src="{{ recipe.featured_image.url }}" class="card-img-top" alt="{{ recipe.title }}">
-                <div class="card-body">
-                    <h5 class="card-title">{{ recipe.title }}</h5>
-                    <p class="card-text">{{ recipe.description }}</p>
-                    <a href="{% url 'recipe_detail' recipe.slug %}" class="btn btn-primary">View Recipe</a>
+<div class="row">
+    {% for recipe in page_obj %}
+    <div class="col-md-4">
+        <div class="card mb-4 shadow-lg">
+            <img src="{{ recipe.featured_image.url }}" class="card-img-top" alt="{{ recipe.title }}">
+            <div class="card-body">
+                <h5 class="card-title">{{ recipe.title }}</h5>
+                <p class="card-text">{{ recipe.description }}</p>
+                <div class="text-center">
+                    <a href="{% url 'recipe_detail' recipe.slug %}" class="btn btn-custom">View Recipe</a>
                 </div>
             </div>
         </div>
-        {% empty %}
-        <p class="text-center">No recipes available at the moment.</p>
-        {% endfor %}
     </div>
+    {% empty %}
+    <p class="text-center">No recipes available at the moment.</p>
+    {% endfor %}
 </div>
 
 <!-- Pagination Controls -->
