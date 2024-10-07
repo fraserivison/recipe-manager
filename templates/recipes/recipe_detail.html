@@ -1,101 +1,114 @@
 {% extends 'base.html' %}
 
+{% load custom_filters %}
+
 {% block title %}{{ recipe.title }}{% endblock %}
 
 {% block content %}
-<div class="container mt-5 recipe-detail">
+<div class="container mt-5">
 
-    <h1 class="text-center recipe-title">{{ recipe.title }}</h1>
-    
+    <h1 class="text-center">{{ recipe.title }}</h1>
     {% if recipe.featured_image %}
-    <div class="text-center mb-4 recipe-image">
-        <img src="{{ recipe.featured_image.url }}" alt="{{ recipe.title }}" class="img-fluid" style="max-width: 80%; height: auto;">
+    <img src="{{ recipe.featured_image.url }}" alt="{{ recipe.title }}" class="img-fluid mb-4">
+    {% endif %}
+
+    <div class="recipe-details mt-4">
+        <h3>Description:</h3>
+        <p>{{ recipe.description }}</p>
+
+        <h3>Ingredients:</h3>
+        <ul class="list-group mb-3">
+            {% for ingredient in recipe.ingredients.splitlines %}
+            <li class="list-group-item">{{ ingredient }}</li>
+            {% endfor %}
+        </ul>
+
+        <h3>Instructions:</h3>
+        <ol class="list-group mb-3">
+            {% for instruction in recipe.instructions.splitlines %}
+            <li class="list-group-item">{{ instruction }}</li>
+            {% endfor %}
+        </ol>
+
+        <p><strong>Cooking Time:</strong> {{ recipe.cooking_time }} minutes</p>
+        <p><strong>Servings:</strong> {{ recipe.servings }}</p>
+
+        <h3>Average Rating:</h3>
+        {% if recipe.average_rating %}
+        <p>{{ recipe.average_rating|floatformat:1 }} / 5</p>
+        {% else %}
+        <p>This recipe has not been rated yet.</p>
+        {% endif %}
     </div>
-    {% endif %}
 
-    <h3 class="recipe-section-title">Description:</h3>
-    <p class="recipe-description">{{ recipe.description }}</p>
-
-    <h3 class="recipe-section-title">Ingredients:</h3>
-    <ul class="recipe-ingredients">
-        {% for ingredient in recipe.ingredients.splitlines %}
-        <li>{{ ingredient }}</li>
-        {% endfor %}
-    </ul>
-
-    <h3 class="recipe-section-title">Instructions:</h3>
-    <ol class="recipe-instructions">
-        {% for instruction in recipe.instructions.splitlines %}
-        <li>{{ instruction }}</li>
-        {% endfor %}
-    </ol>
-
-    <p><strong>Cooking Time:</strong> <span class="recipe-cooking-time">{{ recipe.cooking_time }} minutes</span></p>
-    <p><strong>Servings:</strong> <span class="recipe-servings">{{ recipe.servings }}</span></p>
-
-    <h3 class="recipe-section-title">Average Rating:</h3>
-    {% if recipe.average_rating %}
-    <p class="recipe-rating">{{ recipe.average_rating|floatformat:1 }} / 5</p>
-    {% else %}
-    <p>This recipe has not been rated yet.</p>
-    {% endif %}
-
-    <h3 class="recipe-section-title">Rate this Recipe</h3>
-    {% if user.is_authenticated %}
-        <form method="post" class="mb-4 recipe-rating-form">
+    <div class="rating-section mb-4">
+        <h3>Rate this Recipe</h3>
+        {% if user.is_authenticated %}
+        <form method="post">
             {% csrf_token %}
-            {{ rating_form.rating|add_class:"form-control" }}  <!-- Use add_class filter for custom CSS -->
+            <div class="form-group">
+                <label for="{{ rating_form.score.id_for_label }}">Rate this recipe:</label>
+                {{ rating_form.score }}
+                {% if rating_form.score.errors %}
+                <div class="text-danger">
+                    {{ rating_form.score.errors }}
+                </div>
+                {% endif %}
+            </div>
             <button type="submit" class="btn btn-primary">Submit Rating</button>
         </form>
         {% if existing_rating %}
-            <p>Your current rating: <span class="existing-rating">{{ existing_rating.score }}</span></p>
-        {% else %}
-            <p>You have not rated this recipe yet.</p>
+        <p>Your current rating: {{ existing_rating.score }}</p>
         {% endif %}
-    {% else %}
+        {% else %}
         <p>You need to be logged in to rate this recipe.</p>
-    {% endif %}
-
-    <!-- Social Share Buttons -->
-    <div class="social-share mt-4">
-        <h3 class="recipe-section-title">Share this recipe:</h3>
-        <div class="btn-group" role="group" aria-label="Social Media Share Buttons">
-            <a href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}" target="_blank"
-                class="btn btn-outline-primary">Share on Facebook</a>
-            <a href="https://twitter.com/intent/tweet?text={{ recipe.title }}&url={{ request.build_absolute_uri }}"
-                target="_blank" class="btn btn-outline-info">Share on Twitter</a>
-            <a href="https://api.whatsapp.com/send?text={{ recipe.title }} {{ request.build_absolute_uri }}"
-                target="_blank" class="btn btn-outline-success">Share on WhatsApp</a>
-            <button class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#instagramModal">Share on Instagram</button>
-        </div>
+        {% endif %}
     </div>
+    
+    
 
-    <!-- Instagram Share Modal -->
-    <div class="modal fade" id="instagramModal" tabindex="-1" aria-labelledby="instagramModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="instagramModalLabel">Share on Instagram</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <p>To share this recipe on Instagram, copy the link below:</p>
-                    <input type="text" id="recipeLink" class="form-control" value="{{ request.build_absolute_uri }}" readonly>
-                    <p class="mt-2">Then, paste it into your Instagram story or post!</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                </div>
+<!-- Social Share Buttons -->
+<div class="social-share mt-4">
+    <h3>Share this recipe:</h3>
+    <div class="btn-group" role="group" aria-label="Social Media Share Buttons">
+        <a href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}" target="_blank"
+            class="btn btn-outline-primary">Share on Facebook</a>
+        <a href="https://twitter.com/intent/tweet?text={{ recipe.title }}&url={{ request.build_absolute_uri }}"
+            target="_blank" class="btn btn-outline-info">Share on Twitter</a>
+        <a href="https://api.whatsapp.com/send?text={{ recipe.title }} {{ request.build_absolute_uri }}" target="_blank"
+            class="btn btn-outline-success">Share on WhatsApp</a>
+        <button class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#instagramModal">Share on
+            Instagram</button>
+    </div>
+</div>
+
+<!-- Instagram Share Modal -->
+<div class="modal fade" id="instagramModal" tabindex="-1" aria-labelledby="instagramModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="instagramModalLabel">Share on Instagram</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>To share this recipe on Instagram, copy the link below:</p>
+                <input type="text" id="recipeLink" class="form-control" value="{{ request.build_absolute_uri }}"
+                    readonly>
+                <p class="mt-2">Then, paste it into your Instagram story or post!</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
             </div>
         </div>
     </div>
+</div>
 
-    {% if user.is_authenticated and recipe.author == user %}
-    <div class="mt-4 text-center">
-        <a href="{% url 'edit_recipe' recipe.slug %}" class="btn btn-warning">Edit</a>
-        <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
-    </div>
-    {% endif %}
+{% if user.is_authenticated and recipe.author == user %}
+<div class="mt-4">
+    <a href="{% url 'edit_recipe' recipe.slug %}" class="btn btn-warning">Edit</a>
+    <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
+</div>
+{% endif %}
 </div>
 
 <!-- Delete Confirmation Modal -->

@@ -3,7 +3,7 @@ from django.core.paginator import Paginator
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from allauth.account.views import LoginView as AllauthLoginView, SignupView as AllauthSignupView, LogoutView as AllauthLogoutView
-from .models import Recipe
+from .models import Recipe, Rating
 from .forms import RecipeForm, RatingForm
 from django.utils.text import slugify
 import uuid
@@ -40,25 +40,27 @@ def recipe_detail(request, slug):
             rating_form = RatingForm(request.POST)
             if rating_form.is_valid():
                 if existing_rating:
-                # Update the existing rating
+                    # Update the existing rating
                     existing_rating.score = rating_form.cleaned_data['score']
                     existing_rating.save()
                     messages.success(request, 'Your rating has been updated!')
-                else:        
+                else:
+                    # Save the new rating
                     rating = rating_form.save(commit=False)
                     rating.recipe = recipe
                     rating.user = request.user
                     rating.save()
                     messages.success(request, 'Your rating has been submitted!')
 
+                # Update the average rating for the recipe
                 recipe.update_average_rating()
                 return redirect('recipe_detail', slug=slug)
             else:
                 messages.error(request, 'Please correct the errors below.')
         else:
             messages.error(request, 'You need to be logged in to rate this recipe.')
-
-
+            # If not authenticated, create an empty form to return to the template
+            rating_form = RatingForm()
     else:
         rating_form = RatingForm()
 
@@ -66,8 +68,8 @@ def recipe_detail(request, slug):
         'recipe': recipe,
         'rating_form': rating_form,
         'existing_rating': existing_rating,
-    })    
-
+    })
+    
 # Create a recipe
 @login_required
 def create_recipe(request):

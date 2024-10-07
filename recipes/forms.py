@@ -57,11 +57,15 @@ class RatingForm(forms.ModelForm):
         model = Rating
         fields = ['score']
         widgets = {
-            'score': forms.Select(choices=[
+            'score': forms.Select(
+                choices=[
+                ('', 'Select a rating'),
                 (1, '1 Star'),
                 (2, '2 Stars'),
                 (3, '3 Stars'),
                 (4, '4 Stars'),
                 (5, '5 Stars'),
-            ]),
+            ],
+                attrs={'class': 'form-control'},
+            ),
         }
