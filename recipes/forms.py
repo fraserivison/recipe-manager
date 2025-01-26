@@ -52,6 +52,19 @@ class RecipeForm(forms.ModelForm):
             'servings',
         ]
 
+    # Custom validation for negative values
+    def clean_cooking_time(self):
+        cooking_time = self.cleaned_data.get('cooking_time')
+        if cooking_time < 0:
+            raise forms.ValidationError('Cooking time cannot be negative.')
+        return cooking_time
+
+    def clean_servings(self):
+        servings = self.cleaned_data.get('servings')
+        if servings < 0:
+            raise forms.ValidationError('Servings cannot be negative.')
+        return servings
+
 class RatingForm(forms.ModelForm):
     class Meta:
         model = Rating
