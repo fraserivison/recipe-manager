@@ -1,6 +1,16 @@
+"""
+Django settings for the Sizzle project.
+
+This module contains all the configuration settings for the Sizzle project.
+It includes settings for database connections, third-party services like
+Cloudinary, security settings, and app configurations.
+
+Make sure to keep sensitive information such as the secret key and database
+credentials secure by using environment variables.
+"""
+import os
 from pathlib import Path
 from dotenv import load_dotenv
-import os
 import dj_database_url
 import cloudinary
 import cloudinary.uploader
@@ -25,11 +35,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DEBUG', 'True') == 'True'
 
-ALLOWED_HOSTS = [
-    '8000-fraserivison-sizzle-ian76ojbu6m.ws-eu117.gitpod.io',
-    'sizzle-recipe-manager.herokuapp.com',
-    'sizzle-recipe-manager-b83a6c304777.herokuapp.com',
-]
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '').split(',')
 
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
