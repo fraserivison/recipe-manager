@@ -42,6 +42,13 @@ AUTHENTICATION_BACKENDS = (
     'allauth.account.auth_backends.AuthenticationBackend',
 )
 
+CSRF_TRUSTED_ORIGINS = [
+    'https://*.gitpod.io',
+    'https://sizzle-recipe-manager.herokuapp.com',
+]
+
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
 # Application definition
 INSTALLED_APPS = [
     'django.contrib.admin',
