@@ -1,3 +1,12 @@
+html, body {
+    height: 100%; /* Ensure the body takes the full viewport height */
+    margin: 0;
+}
+
+.main-content {
+    flex-grow: 1; /* Ensures the main content takes up available space */
+}
+
 h1, h2, h3, h4, h5, .btn {
     font-family: 'Playfair Display', serif;
 }
