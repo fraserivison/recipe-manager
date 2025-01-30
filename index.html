@@ -2,166 +2,226 @@
 
 {% load static %}
 
-{% block title %}Welcome to Sizzle{% endblock %}
+{% block title %}Welcome to Sizzle{%endblock %}
 
 {% block content %}
 <!-- Hero Section -->
 <div class="hero-container text-center">
-    <img src="https://res.cloudinary.com/dmylma7bf/image/upload/v1728251756/sizzle_kbl4tj.jpg"
-        alt="Chef preparing a meal" class="img-fluid rounded hero-image">
-    <div class="hero-overlay">
-        <div class="hero-text">
-            <h1 class="display-4">Sizzle</h1>
-            <p class="lead mx-3">Your one-stop solution to discover and share the tastiest recipes.</p>
-            <div class="container-fluid text-center">
-                <a href="{% url 'recipe_list' %}" class="btn btn-custom btn-lg">Browse All Recipes</a>
-            </div>
-        </div>
+  <img
+    src="https://res.cloudinary.com/dmylma7bf/image/upload/v1728251756/sizzle_kbl4tj.jpg"
+    alt="Chef preparing a meal"
+    class="img-fluid rounded hero-image"
+  >
+  <div class="hero-overlay">
+    <div class="hero-text">
+      <h1 class="display-4">Sizzle</h1>
+      <p class="lead mx-3">
+        Your one-stop solution to discover and share the tastiest recipes.
+      </p>
+      <div class="container-fluid text-center">
+        <a href="{% url 'recipe_list' %}" class="btn btn-custom btn-lg"
+          >Browse All Recipes</a
+        >
+      </div>
     </div>
+  </div>
 </div>
 
 <div class="container text-center my-5">
-    <h2 class="mb-4">What You Can Do</h2>
-    <div class="row">
-        <div class="col-md-4">
-            <div class="card custom-card mb-4 shadow-lg">
-                <div class="card-body">
-                    <h3 class="card-title">Create and Edit Recipes</h3>
-                    <p class="card-text">Easily create and edit your own recipes, customising them to suit your taste.
-                        Add ingredients, instructions and a picture!</p>
-                </div>
-            </div>
+  <h2 class="mb-4">What You Can Do</h2>
+  <div class="row">
+    <div class="col-md-4">
+      <div class="card custom-card mb-4 shadow-lg">
+        <div class="card-body">
+          <h3 class="card-title">Create and Edit Recipes</h3>
+          <p class="card-text">
+            Easily create and edit your own recipes, customising them to suit
+            your taste. Add ingredients, instructions and a picture!
+          </p>
         </div>
-        <div class="col-md-4">
-            <div class="card custom-card mb-4 shadow-lg">
-                <div class="card-body">
-                    <h3 class="card-title">Rate Recipes</h3>
-                    <p class="card-text">Share your thoughts on recipes by rating them. Help others discover the best
-                        dishes while keeping track of your favourites!</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card custom-card mb-4 shadow-lg">
-                <div class="card-body">
-                    <h3 class="card-title">Share Recipes</h3>
-                    <p class="card-text">Easily share your favourite recipes with friends and family. Spread the joy of
-                        cooking and discover new flavours together!</p>
-                </div>
-            </div>
-        </div>
+      </div>
     </div>
+    <div class="col-md-4">
+      <div class="card custom-card mb-4 shadow-lg">
+        <div class="card-body">
+          <h3 class="card-title">Rate Recipes</h3>
+          <p class="card-text">
+            Share your thoughts on recipes by rating them. Help others discover
+            the best dishes while keeping track of your favourites!
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card custom-card mb-4 shadow-lg">
+        <div class="card-body">
+          <h3 class="card-title">Share Recipes</h3>
+          <p class="card-text">
+            Easily share your favourite recipes with friends and family. Spread
+            the joy of cooking and discover new flavours together!
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <div class="row mt-4">
-    <div class="col-md-4 text-center">
-        <div class="card mb-4 shadow-sm">
-            <img src="https://res.cloudinary.com/dmylma7bf/image/upload/v1727734088/mm5zi9vpxmoil6zks8mn.jpg"
-                class="card-img-top" alt="Fresh Ingredients">
-            <div class="card-body">
-                <h3 class="card-title">Fresh Ingredients</h3>
-                <p class="card-text">Discover recipes that highlight fresh and wholesome ingredients.</p>
-            </div>
-        </div>
+  <div class="col-md-4 text-center">
+    <div class="card mb-4 shadow-sm">
+      <img
+        src="https://res.cloudinary.com/dmylma7bf/image/upload/v1727734088/mm5zi9vpxmoil6zks8mn.jpg"
+        class="card-img-top"
+        alt="Fresh Ingredients"
+      >
+      <div class="card-body">
+        <h3 class="card-title">Fresh Ingredients</h3>
+        <p class="card-text">
+          Discover recipes that highlight fresh and wholesome ingredients.
+        </p>
+      </div>
     </div>
-    <div class="col-md-4 text-center">
-        <div class="card mb-4 shadow-sm">
-            <img src="https://res.cloudinary.com/dmylma7bf/image/upload/v1727734087/mocmyxteoqzcquuseyos.jpg"
-                class="card-img-top" alt="A couple cooking together">
-            <div class="card-body">
-                <h3 class="card-title">Easy Cooking</h3>
-                <p class="card-text">Find simple, step-by-step guides to create delicious meals.</p>
-            </div>
-        </div>
+  </div>
+  <div class="col-md-4 text-center">
+    <div class="card mb-4 shadow-sm">
+      <img
+        src="https://res.cloudinary.com/dmylma7bf/image/upload/v1727734087/mocmyxteoqzcquuseyos.jpg"
+        class="card-img-top"
+        alt="A couple cooking together"
+      >
+      <div class="card-body">
+        <h3 class="card-title">Easy Cooking</h3>
+        <p class="card-text">
+          Find simple, step-by-step guides to create delicious meals.
+        </p>
+      </div>
     </div>
-    <div class="col-md-4 text-center">
-        <div class="card mb-4 shadow-sm">
-            <img src="https://res.cloudinary.com/dmylma7bf/image/upload/v1727734087/ri2smiy8g6bwcvwjxk8l.jpg"
-                class="card-img-top" alt="Cooking Class">
-            <div class="card-body">
-                <h3 class="card-title">Join the Community</h3>
-                <p class="card-text">Share your favourite recipes and get feedback from fellow food lovers.</p>
-            </div>
-        </div>
+  </div>
+  <div class="col-md-4 text-center">
+    <div class="card mb-4 shadow-sm">
+      <img
+        src="https://res.cloudinary.com/dmylma7bf/image/upload/v1727734087/ri2smiy8g6bwcvwjxk8l.jpg"
+        class="card-img-top"
+        alt="Cooking Class"
+      >
+      <div class="card-body">
+        <h3 class="card-title">Join the Community</h3>
+        <p class="card-text">
+          Share your favourite recipes and get feedback from fellow food lovers.
+        </p>
+      </div>
     </div>
+  </div>
 </div>
 <div class="container mt-5">
-    <h2 class="text-center mb-4">Why Cooking Matters</h2>
-    <p class="mb-5 text-justify">Cooking is more than just preparing food; it is a powerful expression of love,
-        creativity, and culture. It nurtures relationships, brings families together, and promotes healthier living
-        through mindful ingredient choices. Cooking also fosters culinary creativity and allows individuals to explore
-        diverse cuisines, preserving family traditions along the way. Moreover, it enhances practical skills, provides
-        economic benefits, and encourages sustainability by supporting local ingredients.</p>
-    <div class="row">
-        <div class="col-md-6 mb-4">
-            <div class="card shadow-sm">
-                <img src="https://res.cloudinary.com/dmylma7bf/image/upload/v1728251094/baking_f4nxjc.jpg"
-                    class="card-img-top" alt="Cooking Together">
-                <div class="card-body">
-                    <h3 class="card-title">Bonding Through Cooking</h3>
-                    <p class="card-text">Cooking brings people together, allowing families and friends to bond over
-                        delicious meals.</p>
-                </div>
-            </div>
+  <h2 class="text-center mb-4">Why Cooking Matters</h2>
+  <p class="mb-5 text-justify">
+    Cooking is more than just preparing food; it is a powerful expression of
+    love, creativity, and culture. It nurtures relationships, brings families
+    together, and promotes healthier living through mindful ingredient choices.
+    Cooking also fosters culinary creativity and allows individuals to explore
+    diverse cuisines, preserving family traditions along the way. Moreover, it
+    enhances practical skills, provides economic benefits, and encourages
+    sustainability by supporting local ingredients.
+  </p>
+  <div class="row">
+    <div class="col-md-6 mb-4">
+      <div class="card shadow-sm">
+        <img
+          src="https://res.cloudinary.com/dmylma7bf/image/upload/v1728251094/baking_f4nxjc.jpg"
+          class="card-img-top"
+          alt="Cooking Together"
+        >
+        <div class="card-body">
+          <h3 class="card-title">Bonding Through Cooking</h3>
+          <p class="card-text">
+            Cooking brings people together, allowing families and friends to
+            bond over delicious meals.
+          </p>
         </div>
-        <div class="col-md-6 mb-4">
-            <div class="card shadow-sm">
-                <img src="https://res.cloudinary.com/dmylma7bf/image/upload/v1728250968/healthy_pfxm5t.jpg"
-                    class="card-img-top" alt="Health Benefits">
-                <div class="card-body">
-                    <h3 class="card-title">Health Benefits</h3>
-                    <p class="card-text">Cooking at home can lead to healthier eating habits, as you control what goes
-                        into your meals.</p>
-                </div>
-            </div>
-        </div>
+      </div>
     </div>
+    <div class="col-md-6 mb-4">
+      <div class="card shadow-sm">
+        <img
+          src="https://res.cloudinary.com/dmylma7bf/image/upload/v1728250968/healthy_pfxm5t.jpg"
+          class="card-img-top"
+          alt="Health Benefits"
+        >
+        <div class="card-body">
+          <h3 class="card-title">Health Benefits</h3>
+          <p class="card-text">
+            Cooking at home can lead to healthier eating habits, as you control
+            what goes into your meals.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 <div class="container">
-    <h2 class="text-center mb-4">Our Favourite Recipes</h2>
-    <div class="row">
-        <div class="col-lg-4 col-md-6 mb-4">
-            <div class="card shadow-sm">
-                <img src="https://res.cloudinary.com/dmylma7bf/image/upload/v1728244598/nawb4fs3ci7bk10x21mg.jpg"
-                    class="card-img-top" alt="Recipe 1">
-                <div class="card-body">
-                    <h3 class="card-title">Mac and Cheese</h3>
-                    <p class="card-text">A cheesy dish with three different cheeses!</p>
-                    <div class="text-center">
-                    <a href="https://8000-fraserivison-sizzle-0yosmcb7l6q.ws-eu116.gitpod.io/recipe/mac-and-cheese-79f976/"
-                        class="btn btn-custom">View Recipe</a>
-                    </div>
-                </div>
-            </div>
+  <h2 class="text-center mb-4">Our Favourite Recipes</h2>
+  <div class="row">
+    <div class="col-lg-4 col-md-6 mb-4">
+      <div class="card shadow-sm">
+        <img
+          src="https://res.cloudinary.com/dmylma7bf/image/upload/v1728244598/nawb4fs3ci7bk10x21mg.jpg"
+          class="card-img-top"
+          alt="Recipe 1"
+        >
+        <div class="card-body">
+          <h3 class="card-title">Mac and Cheese</h3>
+          <p class="card-text">A cheesy dish with three different cheeses!</p>
+          <div class="text-center">
+            <a
+              href="https://8000-fraserivison-sizzle-0yosmcb7l6q.ws-eu116.gitpod.io/recipe/mac-and-cheese-79f976/"
+              class="btn btn-custom"
+              >View Recipe</a
+            >
+          </div>
         </div>
-        <div class="col-lg-4 col-md-6 mb-4">
-            <div class="card shadow-sm">
-                <img src="https://res.cloudinary.com/dmylma7bf/image/upload/v1727712338/tzoffvtbvsp5xbfyfpt7.jpg"
-                    class="card-img-top" alt="Recipe 2">
-                <div class="card-body">
-                    <h3 class="card-title">Margherita Pizza</h3>
-                    <p class="card-text">A simple Italian pizza with fresh toppings.</p>
-                    <div class="text-center">
-                    <a href="https://8000-fraserivison-sizzle-0yosmcb7l6q.ws-eu116.gitpod.io/recipe/margherita-pizza-f4fb2b/"
-                        class="btn btn-custom">View Recipe</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-4 col-md-6 mb-4">
-            <div class="card shadow-sm">
-                <img src="https://res.cloudinary.com/dmylma7bf/image/upload/v1727712337/sj6ydtdvt84cohpbc6l1.jpg"
-                    class="card-img-top" alt="Recipe 3">
-                <div class="card-body">
-                    <h3 class="card-title">Chocolate Brownies</h3>
-                    <p class="card-text">Rich and fudgy chocolate brownies!</p>
-                    <div class="text-center">
-                    <a href="https://8000-fraserivison-sizzle-0yosmcb7l6q.ws-eu116.gitpod.io/recipe/chocolate-brownie/"
-                        class="btn btn-custom">View Recipe</a>
-                    </div>
-                </div>
-            </div>
-        </div>
+      </div>
     </div>
+    <div class="col-lg-4 col-md-6 mb-4">
+      <div class="card shadow-sm">
+        <img
+          src="https://res.cloudinary.com/dmylma7bf/image/upload/v1727712338/tzoffvtbvsp5xbfyfpt7.jpg"
+          class="card-img-top"
+          alt="Recipe 2"
+        >
+        <div class="card-body">
+          <h3 class="card-title">Margherita Pizza</h3>
+          <p class="card-text">A simple Italian pizza with fresh toppings.</p>
+          <div class="text-center">
+            <a
+              href="https://8000-fraserivison-sizzle-0yosmcb7l6q.ws-eu116.gitpod.io/recipe/margherita-pizza-f4fb2b/"
+              class="btn btn-custom"
+              >View Recipe</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-6 mb-4">
+      <div class="card shadow-sm">
+        <img
+          src="https://res.cloudinary.com/dmylma7bf/image/upload/v1727712337/sj6ydtdvt84cohpbc6l1.jpg"
+          class="card-img-top"
+          alt="Recipe 3"
+        >
+        <div class="card-body">
+          <h3 class="card-title">Chocolate Brownies</h3>
+          <p class="card-text">Rich and fudgy chocolate brownies!</p>
+          <div class="text-center">
+            <a
+              href="https://8000-fraserivison-sizzle-0yosmcb7l6q.ws-eu116.gitpod.io/recipe/chocolate-brownie/"
+              class="btn btn-custom"
+              >View Recipe</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 {% endblock %}
