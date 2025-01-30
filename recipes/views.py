@@ -2,15 +2,18 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.core.paginator import Paginator
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from allauth.account.views import LoginView as AllauthLoginView, SignupView as AllauthSignupView, LogoutView as AllauthLogoutView
-from .models import Recipe, Rating
+from allauth.account.views import LoginView as AllauthLoginView, \
+    SignupView as AllauthSignupView, LogoutView as AllauthLogoutView
+from .models import Recipe  # Rating (comment out for now)
 from .forms import RecipeForm, RatingForm
 from django.utils.text import slugify
 import uuid
 
+
 # Home page view (no recipes displayed here)
 def index(request):
     return render(request, 'index.html')
+
 
 # Recipes list view (renders the recipes.html template)
 def recipe_list(request):
@@ -25,7 +28,12 @@ def recipe_list(request):
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
 
-    return render(request, 'recipes.html', {'page_obj': page_obj, 'search_query': search_query})
+    return render(
+        request,
+        'recipes.html',
+        {'page_obj': page_obj, 'search_query': search_query}
+    )
+
 
 # Recipe detail view
 def recipe_detail(request, slug):
@@ -43,14 +51,20 @@ def recipe_detail(request, slug):
                     # Update the existing rating
                     existing_rating.score = rating_form.cleaned_data['score']
                     existing_rating.save()
-                    messages.success(request, 'Your rating has been updated!')
+                    messages.success(
+                        request,
+                        'Your rating has been updated!'
+                    )
                 else:
                     # Save the new rating
                     rating = rating_form.save(commit=False)
                     rating.recipe = recipe
                     rating.user = request.user
                     rating.save()
-                    messages.success(request, 'Your rating has been submitted!')
+                    messages.success(
+                        request,
+                        'Your rating has been submitted!'
+                    )
 
                 # Update the average rating for the recipe
                 recipe.update_average_rating()
@@ -58,8 +72,10 @@ def recipe_detail(request, slug):
             else:
                 messages.error(request, 'Please correct the errors below.')
         else:
-            messages.error(request, 'You need to be logged in to rate this recipe.')
-            # If not authenticated, create an empty form to return to the template
+            messages.error(
+                request,
+                'You need to be logged in to rate this recipe.'
+            )
             rating_form = RatingForm()
     else:
         rating_form = RatingForm()
@@ -69,7 +85,8 @@ def recipe_detail(request, slug):
         'rating_form': rating_form,
         'existing_rating': existing_rating,
     })
-    
+
+
 # Create a recipe
 @login_required
 def create_recipe(request):
@@ -78,18 +95,15 @@ def create_recipe(request):
         if form.is_valid():
             recipe = form.save(commit=False)
             recipe.author = request.user
-            
             unique_slug = slugify(recipe.title)
             while Recipe.objects.filter(slug=unique_slug).exists():
                 unique_slug = f"{slugify(recipe.title)}-{uuid.uuid4().hex[:6]}"
-            
             recipe.slug = unique_slug
             recipe.save()
             messages.success(request, 'Recipe added successfully!')
             return redirect('recipe_list')
     else:
         form = RecipeForm()
-    
     return render(request, 'recipes/create_recipe.html', {'form': form})
 
 
@@ -100,7 +114,10 @@ def edit_recipe(request, slug):
 
     # Check if the user is the author or an admin
     if recipe.author != request.user and not request.user.is_staff:
-        messages.error(request, 'You do not have permission to edit this recipe.')
+        messages.error(
+            request,
+            'You do not have permission to edit this recipe.'
+        )
         return redirect('recipe_detail', slug=slug)
 
     if request.method == 'POST':
@@ -120,6 +137,7 @@ def edit_recipe(request, slug):
         'title': 'Edit Recipe',
     })
 
+
 # Recipe delete view
 @login_required
 def delete_recipe(request, slug):
@@ -127,7 +145,10 @@ def delete_recipe(request, slug):
 
     # Check if the user is the author or an admin
     if recipe.author != request.user and not request.user.is_staff:
-        messages.error(request, 'You do not have permission to delete this recipe.')
+        messages.error(
+            request,
+            'You do not have permission to delete this recipe.'
+        )
         return redirect('recipe_detail', slug=slug)
 
     if request.method == 'POST':
@@ -153,6 +174,7 @@ class LoginView(AllauthLoginView):
     def get_success_url(self):
         return self.request.META.get('HTTP_REFERER', super().get_success_url())
 
+
 # Custom signup view using allauth
 class SignupView(AllauthSignupView):
     template_name = 'account/signup.html'
@@ -165,6 +187,7 @@ class SignupView(AllauthSignupView):
     def get_success_url(self):
         return self.request.META.get('HTTP_REFERER', super().get_success_url())
 
+
 # Custom logout view using allauth
 class LogoutView(AllauthLogoutView):
     template_name = 'account/logout.html'
@@ -176,6 +199,7 @@ class LogoutView(AllauthLogoutView):
     def get_success_url(self):
         return self.request.META.get('HTTP_REFERER', super().get_success_url())
 
+
 # Custom 404 view
 def custom_404_view(request, exception):
-    return render(request, '404.html', status=404)        
+    return render(request, '404.html', status=404)
