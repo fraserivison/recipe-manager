@@ -1,9 +1,5 @@
-{% extends "base.html" %}
-{% load static %}
-
-{% block title %}Recipes - Sizzle{% endblock %}
-
-{% block content %}
+{% extends "base.html" %} {% load static %} {% block title %}Recipes - Sizzle{%
+endblock %} {% block content %}
 <div class="container mt-5">
   <h1 class="text-center">Recipes</h1>
 
@@ -37,7 +33,8 @@
             <a
               href="{% url 'recipe_detail' recipe.slug %}"
               class="btn btn-custom"
-            >View Recipe</a>
+              >View Recipe</a
+            >
           </div>
         </div>
       </div>
@@ -54,26 +51,32 @@
       <a href="?page=1" class="page-link">FIRST</a>
     </li>
     <li class="page-item">
-      <a href="?page={{ page_obj.previous_page_number }}" class="page-link">&laquo; PREV</a>
+      <a href="?page={{ page_obj.previous_page_number }}" class="page-link"
+        >&laquo; PREV</a
+      >
     </li>
     {% endif %}
-  
+
     <!-- Display Current Page Number -->
     <li class="page-item disabled">
-      <span class="page-link">Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</span>
+      <span class="page-link"
+        >Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</span
+      >
     </li>
-  
+
     {% if page_obj.has_next %}
     <li class="page-item">
-      <a href="?page={{ page_obj.next_page_number }}" class="page-link">NEXT &raquo;</a>
+      <a href="?page={{ page_obj.next_page_number }}" class="page-link"
+        >NEXT &raquo;</a
+      >
     </li>
     <li class="page-item">
-      <a href="?page={{ page_obj.paginator.num_pages }}" class="page-link">LAST</a>
+      <a href="?page={{ page_obj.paginator.num_pages }}" class="page-link"
+        >LAST</a
+      >
     </li>
     {% endif %}
   </ul>
   <!-- End of Pagination Controls -->
-
 </div>
 {% endblock %}
-
