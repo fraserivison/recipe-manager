@@ -15,7 +15,7 @@ def index(request):
 # Recipes list view (renders the recipes.html template)
 def recipe_list(request):
     search_query = request.GET.get('search', '')
-    
+
     if search_query:
         recipes = Recipe.objects.filter(title__icontains=search_query)
     else:
@@ -179,4 +179,3 @@ class LogoutView(AllauthLogoutView):
 # Custom 404 view
 def custom_404_view(request, exception):
     return render(request, '404.html', status=404)        
-
