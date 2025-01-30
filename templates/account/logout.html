@@ -1,17 +1,21 @@
-{% extends 'base.html' %} {% load static %} {% block title %}Log Out - Sizzle{%
-endblock %} {% block content %}
-<div
-  class="container mt-5 d-flex flex-column justify-content-center align-items-center"
-  style="min-height: 100vh"
->
-  <h2 class="text-center mb-3">Log Out</h2>
-  <p class="text-center mb-4">Are you sure you want to log out?</p>
-  <form method="post" action="{% url 'account_logout' %}" class="text-center">
-    {% csrf_token %}
-    <button type="submit" class="btn btn-danger">Log Out</button>
-  </form>
-  <div class="mt-3 text-center">
-    <p><a href="{% url 'index' %}" class="btn btn-secondary">Cancel</a></p>
-  </div>
-</div>
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}Log Out - Sizzle{% endblock %}
+
+{% block content %}
+    <div class="container mt-5 d-flex flex-column justify-content-center align-items-center" style="min-height: 100vh;">
+        <h2 class="text-center mb-3">Log Out</h2>
+        <p class="text-center mb-4">Are you sure you want to log out?</p>
+        <form method="post" action="{% url 'account_logout' %}" class="text-center">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger">Log Out</button>
+        </form>
+        <div class="mt-3 text-center">
+            <p><a href="{% url 'index' %}" class="btn btn-secondary">Cancel</a></p>
+        </div>
+    </div>
 {% endblock %}
+
+
